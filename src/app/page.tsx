@@ -2,6 +2,6 @@
 
 export default function Home() {
   return (
-      <p className="font-bold text-primary-700">Hello World</p>
+      <p className="font-bold text-primary-100">Hello World</p>
   );
 }
