@@ -2,17 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Milk White Regular";
+  src: url("/fonts/White Milk.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
-    height: 100vh;
-    margin: 0;
-    width: 100vw;
-  
-    background-image: 
-      url('/background-img.svg'),
-      linear-gradient(180deg, #0c0c00, #1f191a);
-  
-    background-repeat: no-repeat, no-repeat;
-    background-size: cover, cover; /* or 'auto, cover' depending on your design */
-    background-position: center, center;
-  }
-  
+  height: 100vh;
+  margin: 0;
+  width: 100vw;
+
+  background-image: url("/background-img.svg"),
+    linear-gradient(180deg, #0c0c00, #1f191a);
+
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, cover; /* or 'auto, cover' depending on your design */
+  background-position: center, center;
+}
