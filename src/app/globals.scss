@@ -10,15 +10,22 @@
   font-display: swap;
 }
 
+html,
 body {
-  height: 100vh;
+  height: 100%;
   margin: 0;
-  width: 100vw;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
 
+body {
   background-image: url("/background-img.svg"),
     linear-gradient(180deg, #0c0c00, #1f191a);
 
   background-repeat: no-repeat, no-repeat;
-  background-size: cover, cover; /* or 'auto, cover' depending on your design */
+  background-size: cover, cover;
   background-position: center, center;
+  background-attachment: fixed; /* This keeps the background fixed during scroll */
+  min-height: 100vh; /* Ensure background covers at least viewport height */
 }
