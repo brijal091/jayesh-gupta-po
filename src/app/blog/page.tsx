@@ -10,8 +10,8 @@ export default function Blog() {
           <h1 className="text-4xl font-bold text-white mb-8">Blog</h1>
           <div className="text-white">
             <p className="text-lg mb-4">
-              Welcome to my blog. Here I share my thoughts, experiences, and insights
-              about development, design, and technology.
+              Welcome to my blog. Here I share my thoughts, experiences, and
+              insights about development, design, and technology.
             </p>
             {/* Add your blog content here */}
           </div>

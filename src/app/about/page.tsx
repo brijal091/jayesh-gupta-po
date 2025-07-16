@@ -10,8 +10,8 @@ export default function About() {
           <h1 className="text-4xl font-bold text-white mb-8">About Me</h1>
           <div className="text-white">
             <p className="text-lg mb-4">
-              Welcome to my about page. Here you can learn more about my background,
-              skills, and experience.
+              Welcome to my about page. Here you can learn more about my
+              background, skills, and experience.
             </p>
             {/* Add your about content here */}
           </div>

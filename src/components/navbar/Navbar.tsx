@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { NAME, navItems } from "@/constants/constants";
+import { NAME, NAV_ITEMS } from "@/constants/constants";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,7 +23,7 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
-          {navItems.map((item) => (
+          {NAV_ITEMS.map((item) => (
             <Link
               key={item.name}
               href={item.href}
@@ -67,7 +67,7 @@ const Navbar = () => {
         }`}
       >
         <div className="container mx-auto px-4 py-6">
-          {navItems.map((item) => (
+          {NAV_ITEMS.map((item) => (
             <Link
               key={item.name}
               href={item.href}

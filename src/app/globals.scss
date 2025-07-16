@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: "Milk White Regular";
-  src: url("/fonts/White Milk.otf") format("opentype");
+  src: url("/fonts/Milk White Regular.ttf") format("opentype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -28,4 +28,12 @@ body {
   background-position: center, center;
   background-attachment: fixed; /* This keeps the background fixed during scroll */
   min-height: 100vh; /* Ensure background covers at least viewport height */
+}
+.no-scroll::-webkit-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  display: none !important;
+  margin: 0 auto;
 }
