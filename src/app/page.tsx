@@ -5,14 +5,14 @@ import Navbar from "@/components/navbar/Navbar";
 
 export default function Home() {
   return (
-    <>
-    <main>
-    <Navbar/>
-    <div className="h-full">
-      <p className="font-bold text-primary-100">Hello World</p>
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <main className="flex-1 pt-20">
+        <div className="h-[2000px]">
+          <p className="font-bold text-primary-100">Hello World</p>
+        </div>
+      </main>
+      <Footer />
     </div>
-    <Footer/>
-    </main>
-    </>
   );
 }
