@@ -41,3 +41,16 @@ export const SOCIAL_LINKS = [
     alt: "X",
   },
 ];
+
+// Home page content
+export const HOME_CONTENT = {
+  TITLE_TAG: "FullStack Developer",
+  GREETING: "HELLO, I'M",
+  NAME_HIGHLIGHT: "Jayesh",
+  SPEAKING: "SPEAKING",
+  EXPERIENCE: {
+    YEARS: "4 yrs",
+    DESCRIPTION: "of Building Scalable, Seamless & Smart Solutions",
+  },
+  SCROLL_TEXT: "SCROLL • SCROLL • SCROLL",
+};

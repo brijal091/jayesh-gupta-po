@@ -11,6 +11,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        sans: ["var(--font-bricolage)", "Bricolage Grotesque", "Bricolage Grotesque Placeholder", "sans-serif"],
         milkwhite: ["Milk White Regular", "sans-serif"],
       },
       colors: {

@@ -17,7 +17,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 h-20 backdrop-blur-[100px] text-white">
       <div className="container mx-auto px-4 h-full flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="text-2xl font-bold font-milkwhite">
+        <Link href="/" className="text-4xl font-bold font-milkwhite">
           {NAME}
         </Link>
 
