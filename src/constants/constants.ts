@@ -1,3 +1,8 @@
+import Github from "@/assets/social/Github";
+import Insagram from "@/assets/social/Insagram";
+import LinkedIn from "@/assets/social/LinkedIn";
+import Twitter from "@/assets/social/Twitter";
+
 // About person
 export const NAME = "Jayesh Gupta";
 // Navigation items for the website
@@ -14,19 +19,25 @@ export const SOCIAL_LINKS = [
   {
     name: "LINKEDIN",
     href: "https://www.linkedin.com/",
-    icon: "/assets/social-media/linkedin.svg",
+    icon: LinkedIn,
     alt: "LinkedIn",
+  },
+  {
+    name: "GITHUB",
+    href: "https://www.linkedin.com/",
+    icon: Github,
+    alt: "Github",
   },
   {
     name: "INSTAGRAM",
     href: "https://www.instagram.com/",
-    icon: "/assets/social-media/insta.svg",
+    icon: Insagram,
     alt: "Instagram",
   },
   {
     name: "X",
     href: "https://twitter.com/",
-    icon: "/assets/social-media/twitter.svg",
+    icon: Twitter,
     alt: "X",
   },
 ];

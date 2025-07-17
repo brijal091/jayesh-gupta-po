@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { SOCIAL_LINKS } from "@/constants/constants";
 
 const Footer = () => {
@@ -15,13 +14,7 @@ const Footer = () => {
               className="flex items-center gap-2 hover:opacity-80 transition"
             >
               <span className="text-primary-200">{link.name}</span>
-              <Image
-                src={link.icon}
-                alt={link.alt}
-                width={24}
-                height={24}
-                className="w-6 h-6"
-              />
+            {<link.icon />}
             </a>
             {idx < SOCIAL_LINKS.length - 1 && (
               <span className="hidden md:block h-6 border-l border-white opacity-30 mx-4"></span>
