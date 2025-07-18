@@ -1,3 +1,5 @@
+import { CardBackground } from "@/assets/card/CardBackground";
+import { CardBgImage } from "@/assets/card/CardBgImage";
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
 import { HOME_CONTENT } from "@/constants/constants";
@@ -10,15 +12,25 @@ export default function Home() {
         <div className="container text-white mx-auto px-4 md:px-6 min-h-screen flex flex-col justify-center">
           <div className="space-y-6">
             <div className="space-y-2">
-              <p className="text-primary-100 text-2xl tracking-wider font-semibold">{HOME_CONTENT.TITLE_TAG}</p>
+              <p className="text-primary-100 text-2xl tracking-wider font-semibold">
+                {HOME_CONTENT.TITLE_TAG}
+              </p>
               <h1 className="text-5xl md:text-7xl font-milkwhite ">
-                {HOME_CONTENT.GREETING} <span className="text-9xl">{HOME_CONTENT.NAME_HIGHLIGHT}</span> {HOME_CONTENT.SPEAKING}
+                {HOME_CONTENT.GREETING}{" "}
+                <span className="text-9xl">{HOME_CONTENT.NAME_HIGHLIGHT}</span>{" "}
+                {HOME_CONTENT.SPEAKING}
               </h1>
               <p className="text-xl">
-                <span className="font-semibold">{HOME_CONTENT.EXPERIENCE.YEARS}</span> <span className="text-primary-100">{HOME_CONTENT.EXPERIENCE.DESCRIPTION}</span>
+                <span className="font-semibold">
+                  {HOME_CONTENT.EXPERIENCE.YEARS}
+                </span>{" "}
+                <span className="text-primary-100">
+                  {HOME_CONTENT.EXPERIENCE.DESCRIPTION}
+                </span>
               </p>
             </div>
-            
+            <CardBackground />
+            <CardBgImage />
           </div>
         </div>
       </main>

@@ -52,5 +52,4 @@ export const HOME_CONTENT = {
     YEARS: "4 yrs",
     DESCRIPTION: "of Building Scalable, Seamless & Smart Solutions",
   },
-  SCROLL_TEXT: "SCROLL • SCROLL • SCROLL",
 };
