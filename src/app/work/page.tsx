@@ -1,5 +1,6 @@
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
+import ProfetionalWork from "@/components/ProfetionalWork";
 
 export default function Work() {
   return (
@@ -13,7 +14,7 @@ export default function Work() {
               Explore my portfolio of projects, case studies, and professional
               work. Each project showcases different skills and technologies.
             </p>
-            {/* Add your work/portfolio content here */}
+            <ProfetionalWork />
           </div>
         </div>
       </main>

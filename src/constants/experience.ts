@@ -1,0 +1,23 @@
+export const EXPERIENCES = [
+  {
+    company: "Tata Consultancy Services",
+    type: "Full-time",
+    duration: "4 yrs 1 mo",
+    roles: [
+      {
+        title: "System Engineer",
+        duration: "Dec 2021 - Present",
+        location: "Ahmedabad, Gujarat, India",
+        experience: "3 yrs 8 mos",
+        description: "Full Stack Developer",
+        skills: ["REST APIs", "Angular", "Nginx", "Amazon S3","MySQL","Amazon Web Services (AWS)","Java","JavaScript"]
+      },
+      {
+        title: "Graduate Trainee",
+        duration: "Jul 2021 - Dec 2021",
+        location: "Gandhinagar, Gujarat, India",
+        experience: "6 mos"
+      }
+    ]
+  }
+];

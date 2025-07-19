@@ -12,7 +12,7 @@ export const NAV_ITEMS = [
   { name: "Home", href: "/" },
   { name: "Work", href: "/work" },
   { name: "About", href: "/about" },
-  { name: "Blog", href: "/blog" },
+  // { name: "Blog", href: "/blog" },
   { name: "Let's Talk", href: "/contact" },
 ];
 
