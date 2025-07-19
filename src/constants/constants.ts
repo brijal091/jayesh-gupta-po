@@ -1,3 +1,4 @@
+import Fiverr from "@/assets/social/Fiverr";
 import Github from "@/assets/social/Github";
 import Insagram from "@/assets/social/Insagram";
 import LinkedIn from "@/assets/social/LinkedIn";
@@ -17,6 +18,12 @@ export const NAV_ITEMS = [
 
 // Social media links
 export const SOCIAL_LINKS = [
+  {
+    name: "Fiverr",
+    href: "https://www.fiverr.com/jayeshgupta091",
+    icon: Fiverr,
+    alt: "fiverr",
+  },
   {
     name: "LINKEDIN",
     href: "https://in.linkedin.com/in/jayeshgupta91",

@@ -1,0 +1,106 @@
+@import '../../styles/variables.scss';
+
+.card {
+  position: relative;
+  width: $card-width;
+  max-width: 100%;
+  border-radius: $border-radius-lg;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  overflow: hidden;
+  border: 1px solid $border-color;
+
+  &__background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: $border-radius-lg;
+    pointer-events: none;
+    backdrop-filter: blur(12px);
+    background: $card-background;
+    opacity: 0.35;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 10;
+    padding: $spacing-8;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &__mascot-area {
+    width: 100%;
+    height: $mascot-height;
+    border-radius: $border-radius-md;
+    margin-bottom: $spacing-7;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $mascot-background;
+  }
+
+  &__image-container {
+    position: relative;
+    width: $mascot-content-size;
+    height: $mascot-content-size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__titles {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &-small {
+      color: $primary-200;
+      font-weight: 700;
+      font-size: 1.25rem;
+      font-family: var(--font-bricolage), sans-serif;
+    }
+
+    &-separator {
+      color: $primary-100;
+      font-size: 1.25rem;
+    }
+
+    &-category {
+      color: $primary-200;
+      font-weight: 600;
+      font-size: 1.25rem;
+      font-family: var(--font-bricolage), sans-serif;
+    }
+  }
+
+  &__big-title {
+    font-family: 'Milk White Regular', sans-serif;
+    color: $white;
+    font-size: 1.875rem;
+    line-height: 1.3;
+    font-weight: 700;
+  }
+
+  &__arrow-button {
+    position: absolute;
+    bottom: $spacing-7;
+    right: $spacing-7;
+    background-color: $button-background;
+    border-radius: $border-radius-sm;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: $button-hover;
+      color: $black;
+    }
+  }
+}

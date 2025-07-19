@@ -1,0 +1,31 @@
+// Colors
+$primary-50: #1f191a;
+$primary-100: #ae9c96;
+$primary-200: #f4f3f2;
+$white: #ffffff;
+$black: #000000;
+
+// Gradients
+$card-background: linear-gradient(102deg, rgba(136, 110, 106, 0.8) 0%, rgba(79, 64, 63, 0.8) 48%, rgba(31, 25, 26, 0.8) 100%);
+$mascot-background: linear-gradient(102deg, #203da9 0%, #3255e2 55%, #141b32 100%);
+
+// Border Colors
+$border-color: rgba(150, 127, 121, 0.5);
+
+// Hover States
+$button-hover: rgba(174, 156, 150, 0.8); // primary-100 with 0.8 opacity
+$button-background: rgba(255, 255, 255, 0.1);
+
+// Border Radius
+$border-radius-lg: 30px;
+$border-radius-md: 22px;
+$border-radius-sm: 11px;
+
+// Spacing
+$spacing-7: 1.75rem; // 28px
+$spacing-8: 2rem;    // 32px
+
+// Card Dimensions
+$card-width: 512px;
+$mascot-height: 220px;
+$mascot-content-size: 160px;
