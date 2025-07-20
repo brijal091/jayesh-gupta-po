@@ -71,9 +71,9 @@ export default function Contact() {
           {/* Hero Section */}
           <div className="text-center">
             <div className="inline-flex items-center gap-2 bg-primary-100/20 px-6 py-3 rounded-full mb-8 border border-primary-100/30">
-              {/* <Sparkles className="w-4 h-4 text-primary-100" /> */}
-              <span className="text-primary-100 font-medium">
-                Ready to Create Magic Together?
+              <img className="h-12 w-12" src={'/contact-us.svg'} alt="Contact Us"/>
+              <span className="text-primary-100 font-medium text-lg">
+                Let&apos;s Create Magic Together 
               </span>
             </div>
           </div>

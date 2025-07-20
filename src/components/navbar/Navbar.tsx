@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -7,6 +6,7 @@ import { NAME, NAV_ITEMS } from "@/constants/constants";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState(null);
   const pathname = usePathname();
 
   const toggleMenu = () => {
@@ -24,15 +24,50 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
           {NAV_ITEMS.map((item) => (
-            <Link
+            <div
               key={item.name}
-              href={item.href}
-              className={`text-lg transition-colors duration-300 hover:text-primary-100 ${
-                pathname === item.href ? "text-primary-100" : "text-white"
-              }`}
+              className="relative"
+              onMouseEnter={() => setHoveredItem(item.name)}
+              onMouseLeave={() => setHoveredItem(null)}
             >
-              {item.name}
-            </Link>
+              {item.download ? (
+                <a
+                  href={item.href}
+                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`text-lg transition-colors duration-300 hover:text-primary-100 block ${
+                    pathname === item.href ? "text-primary-100" : "text-white"
+                  }`}
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <Link
+                  href={item.href}
+                  className={`text-lg transition-colors duration-300 hover:text-primary-100 block ${
+                    pathname === item.href ? "text-primary-100" : "text-white"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              )}
+
+              {/* SVG Underline - shows for active or hovered items */}
+              <div
+                className={`w-full absolute -bottom-2 left-1/2 transform -translate-x-1/2 transition-opacity duration-300 ${
+                  pathname === item.href || hoveredItem === item.name
+                    ? "opacity-100"
+                    : "opacity-0"
+                }`}
+              >
+                <img
+                  src="/assets/underline.svg"
+                  alt=""
+                  className="w-full h-auto transition-opacity duration-300"
+                />
+              </div>
+            </div>
           ))}
         </div>
 
@@ -68,16 +103,41 @@ const Navbar = () => {
       >
         <div className="container mx-auto px-4 py-6">
           {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className={`block py-3 text-lg transition-colors duration-300 hover:text-primary-100 ${
-                pathname === item.href ? "text-primary-100" : "text-white"
-              }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {item.name}
-            </Link>
+            <div key={item.name} className="relative">
+              {item.download ? (
+                <a
+                  href={item.href}
+                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`text-lg transition-colors duration-300 hover:text-primary-100 block ${
+                    pathname === item.href ? "text-primary-100" : "text-white"
+                  }`}
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <Link
+                  href={item.href}
+                  className={`text-lg transition-colors duration-300 hover:text-primary-100 block ${
+                    pathname === item.href ? "text-primary-100" : "text-white"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              )}
+
+              {/* SVG Underline for mobile - only shows for active items */}
+              {pathname === item.href && (
+                <div className="absolute bottom-2 left-0 w-full">
+                  <img
+                    src="/assets/underline.svg"
+                    alt=""
+                    className="w-full h-auto transition-opacity duration-300"
+                  />
+                </div>
+              )}
+            </div>
           ))}
         </div>
       </div>

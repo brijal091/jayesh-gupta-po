@@ -12,7 +12,8 @@ export const NAV_ITEMS = [
   { name: "Home", href: "/" },
   { name: "Work", href: "/work" },
   { name: "About", href: "/about" },
-  // { name: "Blog", href: "/blog" },
+  { name: "Resume", href: "/Jayesh_Gupta_Resume.pdf", download: true },
+  { name: "Blog", href: "/blog" },
   { name: "Let's Talk", href: "/contact" },
 ];
 
@@ -52,7 +53,7 @@ export const SOCIAL_LINKS = [
 
 // Home page content
 export const HOME_CONTENT = {
-  TITLE_TAG: "CEO at Belivers Technologies . FullStack Developer",
+  TITLE_TAG: "CEO at Vedra Technologies . FullStack Developer",
   GREETING: "HELLO, I'M",
   NAME_HIGHLIGHT: "Jayesh",
   SPEAKING: "SPEAKING ...",
