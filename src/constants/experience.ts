@@ -38,16 +38,16 @@ export const PROJECTS = [
     subtitle: "A full stack dashboard to monitor orders, users, and inventory using Angular and Node.js.",
     image: "https://via.placeholder.com/300x200?text=E-commerce+Dashboard"
   },
-  {
-    id:'3',
-    name: "Online Learning Platform",
-    subtitle: "Developed responsive UI and integrated video modules for an education portal using Angular and Express.",
-    image: "https://via.placeholder.com/300x200?text=Learning+Platform"
-  },
-  {
-    id:'4',
-    name: "Internal Ticketing System",
-    subtitle: "Created an internal support ticketing system for employees using Angular, MongoDB, and REST APIs.",
-    image: "https://via.placeholder.com/300x200?text=Ticketing+System"
-  }
+  // {
+  //   id:'3',
+  //   name: "Online Learning Platform",
+  //   subtitle: "Developed responsive UI and integrated video modules for an education portal using Angular and Express.",
+  //   image: "https://via.placeholder.com/300x200?text=Learning+Platform"
+  // },
+  // {
+  //   id:'4',
+  //   name: "Internal Ticketing System",
+  //   subtitle: "Created an internal support ticketing system for employees using Angular, MongoDB, and REST APIs.",
+  //   image: "https://via.placeholder.com/300x200?text=Ticketing+System"
+  // }
 ];

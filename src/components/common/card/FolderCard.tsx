@@ -20,27 +20,34 @@ const FolderCard = ({
   onClick?: () => void
 }) => {
   return (
-    <div className="relative w-full aspect-[4/3] max-w-sm cursor-pointer group transition-transform duration-200 hover:scale-105">
-      {/* Base Card Background for styling */}
-      <div className="absolute inset-0 z-1">
-        <CardBackground />
-      </div>
-      {/* Folder appearance background */}
-      <div className="absolute inset-0 z-0">
+    <div className="relative w-full max-w-sm cursor-pointer group transition-transform duration-200 hover:scale-105" style={{ aspectRatio: '380/320' }}>
+      {/* Folder appearance background - Bottom layer */}
+      <div className="absolute inset-0 w-full h-full">
         <CardBgImage />
       </div>
       
+      {/* Base Card Background for styling - Middle layer */}
+      <div className="absolute left-1/2 top-[62%] transform -translate-x-1/2 -translate-y-1/2" style={{ 
+        width: '99.7%', 
+        height: '75%'
+      }}>
+        <CardBackground />
+      </div>
       
-      {/* Year Badge */}
+      {/* Year Badge - Top layer */}
       {year && (
-        <div className="absolute top-4 left-4 bg-black/50 text-white text-xs px-2.5 py-1 rounded-md backdrop-blur-sm z-20">
+        <div className="absolute bg-black/50 text-white text-xs px-2.5 py-1 rounded-md backdrop-blur-sm z-30 left-[8%] top-[6%]">
           {year}
         </div>
       )}
       
-      {/* Content Container */}
-      <div className="relative z-10 h-full p-5 flex flex-col">
-        {/* Image Section - Larger to accommodate bigger images */}
+      {/* Content Container - Top layer */}
+      <div className="absolute left-1/2 top-[60%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col z-20" style={{
+        width: '84%',
+        height: '75%',
+        padding: '5%'
+      }}>
+        {/* Image Section */}
         <div className="flex-1 flex items-center justify-center mb-4">
           <div className="w-20 h-16 rounded-lg overflow-hidden shadow-lg flex items-center justify-center bg-gradient-to-br from-orange-400 to-orange-600">
             {image ? (
@@ -71,26 +78,30 @@ const FolderCard = ({
             {title || 'Folder Title'}
           </h3>
           
-          {/* Description - Optional and compact */}
+          {/* Description */}
           {description && description.trim() && (
             <p className="text-xs opacity-70 line-clamp-2 leading-relaxed">
               {description}
             </p>
           )}
         </div>
-        
-        {/* Arrow Icon */}
-        <div className="absolute bottom-4 right-4 text-white opacity-60 group-hover:opacity-100 transition-opacity duration-200 z-20">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M7 17l9.2-9.2M17 17V7H7"/>
-          </svg>
-        </div>
       </div>
       
-      {/* Click Handler */}
+      {/* Arrow Icon - Top layer */}
+      <div className="absolute text-white opacity-60 group-hover:opacity-100 transition-opacity duration-200 z-30 right-[13%] bottom-[12.5%]">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M7 17l9.2-9.2M17 17V7H7"/>
+        </svg>
+      </div>
+      
+      {/* Click Handler - Topmost layer */}
       {onClick && (
         <div 
-          className="absolute inset-0 z-30 cursor-pointer" 
+          className="absolute z-40 cursor-pointer left-1/2 top-[60%] transform -translate-x-1/2 -translate-y-1/2" 
+          style={{
+            width: '84%',
+            height: '75%'
+          }}
           onClick={onClick}
         />
       )}
@@ -98,4 +109,4 @@ const FolderCard = ({
   );
 };
 
-export default FolderCard;
+export default FolderCard;  

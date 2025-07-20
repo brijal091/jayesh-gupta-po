@@ -3,13 +3,12 @@ import React from "react";
 export const CardBackground = () => {
   return (
     <svg
-      width="512"
-      height="360"
       viewBox="0 0 512 360"
       fill="none"
       id="svg-162207604_1501"
+      opacity={.6}
     >
-      <foreignObject x="-20" y="-20" width="552" height="400">
+      <foreignObject x="-20" y="-20" >
         <div
           style={{
             backdropFilter: "blur(10px)",

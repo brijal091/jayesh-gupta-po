@@ -132,7 +132,7 @@ const ProfessionalWork = () => {
       {/* Projects Column - Placeholder */}
       <div>
         <div className="rounded-2xl p-2">
-          <h2 className="text-2xl font-bold text-white mb-8 flex items-center">
+          <h2 className="text-2xl font-bold text-white mb-16 flex items-center">
             <div className="w-2 h-8 bg-primary-100 rounded-full mr-4"></div>
             Projects
           </h2>
