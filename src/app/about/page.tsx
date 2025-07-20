@@ -1,6 +1,7 @@
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
-
+import Image
+ from "next/image";
 export default function About() {
   return (
     <div className="min-h-screen flex flex-col">
@@ -13,7 +14,18 @@ export default function About() {
               Welcome to my about page. Here you can learn more about my
               background, skills, and experience.
             </p>
-            {/* Add your about content here */}
+            <div className="">
+              <div className="">about</div>
+              <div className="">
+                <Image
+                  src="/my/no-bg/profile2.png"
+                  alt="About Image"
+                  width={500}
+                  height={300}
+                  className="rounded-lg shadow-lg"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </main>
