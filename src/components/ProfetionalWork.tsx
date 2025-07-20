@@ -144,7 +144,7 @@ const ProfessionalWork = () => {
             ) : (
               <div className="space-y-6 w-full">
                 {/* Projects Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-4">
                   {PROJECTS.map((project) => (
                     <FolderCard
                       key={project.id}
@@ -158,7 +158,7 @@ const ProfessionalWork = () => {
                 </div>
 
                 {/* View All Button */}
-                {PROJECTS.length > 3 && (
+                {/* {PROJECTS.length > 3 && (
                   <div className="flex justify-center pt-4">
                     <button
                       // onClick={handleViewAll}
@@ -167,7 +167,7 @@ const ProfessionalWork = () => {
                       View All Projects ({PROJECTS.length})
                     </button>
                   </div>
-                )}
+                )} */}
               </div>
             )}
           </div>
