@@ -30,7 +30,7 @@ const ProfessionalWork = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[25%_1fr] gap-2">
+    <div className="grid grid-cols-1 lg:grid-cols-[30%_1fr] gap-2">
       <div className="lg:sticky lg:top-8 lg:self-start">
         <div className="rounded-2xl p-2">
           <h2 className="text-2xl font-bold text-white mb-8 flex items-center">
@@ -130,47 +130,35 @@ const ProfessionalWork = () => {
       </div>
 
       {/* Projects Column - Placeholder */}
-      <div>
-        <div className="rounded-2xl p-2">
-          <h2 className="text-2xl font-bold text-white mb-16 flex items-center">
-            <div className="w-2 h-8 bg-primary-100 rounded-full mr-4"></div>
-            Projects
-          </h2>
-          <div className="flex items-center justify-center h-64 text-white/60">
-            {PROJECTS.length === 0 ? (
-              <div className="flex items-center justify-center h-64 text-white/60">
-                <p className="text-lg">Projects coming soon...</p>
-              </div>
-            ) : (
-              <div className="space-y-6 w-full">
-                {/* Projects Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-4">
-                  {PROJECTS.map((project) => (
-                    <FolderCard
-                      key={project.id}
-                      year={project.year}
-                      title={project.name}
-                      company={project.comapny} 
-                      type={project.type}
-                      image={project.image}
-                    />
-                  ))}
-                </div>
 
-                {/* View All Button */}
-                {/* {PROJECTS.length > 3 && (
-                  <div className="flex justify-center pt-4">
-                    <button
-                      // onClick={handleViewAll}
-                      className="px-6 py-2 text-sm font-medium text-white/80 hover:text-white border border-white/20 hover:border-white/40 rounded-lg transition-all duration-200 hover:bg-white/5"
-                    >
-                      View All Projects ({PROJECTS.length})
-                    </button>
-                  </div>
-                )} */}
+      <div className="rounded-2xl p-2 h-full">
+        <h2 className="text-2xl font-bold text-white mb-4 flex items-center">
+          <div className="w-2 h-8 bg-primary-100 rounded-full mr-4"></div>
+          Projects
+        </h2>
+
+        {/* Scrollable wrapper only for the project list */}
+        <div className="overflow-y-auto max-h-[calc(100vh-12rem)] pr-2 no-scroll">
+          {PROJECTS.length === 0 ? (
+            <div className="flex items-center justify-center h-64 text-white/60">
+              <p className="text-lg">Projects coming soon...</p>
+            </div>
+          ) : (
+            <div className="space-y-6 w-full">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-4 gap-y-32 px-3 py-12 pb-48">
+                {PROJECTS.map((project, index) => (
+                  <FolderCard
+                    key={project.id}
+                    year={project.year}
+                    title={project.name}
+                    company={project.comapny}
+                    type={project.type}
+                    image={`/assets/services/service-${index + 1}.svg`} 
+                  />
+                ))}
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

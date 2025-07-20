@@ -42,9 +42,7 @@ const FolderCard = ({
       )}
       
       {/* Content Container - Top layer */}
-      <div className="absolute left-1/2 top-[60%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col z-20" style={{
-        width: '84%',
-        height: '75%',
+      <div className="absolute left-1/2 top-[60%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col z-20 h-full w-full" style={{
         padding: '5%'
       }}>
         {/* Image Section */}
