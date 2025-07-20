@@ -21,3 +21,33 @@ export const EXPERIENCES = [
     ]
   }
 ];
+
+export const PROJECTS = [
+  {
+    id:'1',
+    name: "Employee Management System",
+    subtitle: "A web-based CRUD application built with Angular and RESTful APIs for managing employee records.",
+    image: "https://via.placeholder.com/300x200?text=Employee+Management"
+  },
+  {
+    id:'2',
+    year: "2023",
+    comapny: "TCS",
+    type: "Full Stack",
+    name: "E-commerce Dashboard",
+    subtitle: "A full stack dashboard to monitor orders, users, and inventory using Angular and Node.js.",
+    image: "https://via.placeholder.com/300x200?text=E-commerce+Dashboard"
+  },
+  {
+    id:'3',
+    name: "Online Learning Platform",
+    subtitle: "Developed responsive UI and integrated video modules for an education portal using Angular and Express.",
+    image: "https://via.placeholder.com/300x200?text=Learning+Platform"
+  },
+  {
+    id:'4',
+    name: "Internal Ticketing System",
+    subtitle: "Created an internal support ticketing system for employees using Angular, MongoDB, and REST APIs.",
+    image: "https://via.placeholder.com/300x200?text=Ticketing+System"
+  }
+];
