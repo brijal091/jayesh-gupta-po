@@ -113,3 +113,41 @@ export const TESTIMONIALS_DATA = [
     caption: "Stress-Free Process"
   }
 ];
+
+export const ABOUT_ME = `
+Hard work, smart strategies, and the power of “believe”—these are the core principles that drive my journey. I am someone who doesn’t just dream but takes action, embraces challenges, and constantly explores new horizons. From my early fascination with technology in school to advancing through multiple degrees and professional opportunities, I have built my path step by step—never settling and always striving for more.
+
+As a strong believer and an explorer, I have tackled various tech stacks, programming languages, and professional roles. I thrive by balancing dedication to my career with a passion for continuous learning and side projects. For me, the journey never ends, and each new challenge is simply another step forward.
+`;
+export const JOURNEY_TIMELINE = [
+  {
+    "title": "The Spark – School Days",
+    "year": "10th Grade",
+    rotation: "rotate-2",
+    "description": "My journey into the world of technology began in 10th grade when I started attending lectures on WordPress. This early exposure sparked my curiosity for web development and laid the first brick of my tech foundation."
+  },
+  {
+    "title": "The Leap – BCA (Bachelor's College)",
+    "year": "Undergraduate",
+    rotation: "-rotate-1",
+    "description": "Fueled by passion, I pursued a Bachelor of Computer Applications. College was a launchpad—here, I immersed myself in different programming languages and developed a deep understanding of computer science fundamentals."
+  },
+  {
+    "title": "Turning Professional – TCS Digital",
+    "year": "Post-College",
+    rotation: "rotate-3",
+    "description": "Immediately after graduation, I cleared the TCS National Qualifier Test (NQT) and secured a role at TCS Digital. This was my first experience in the tech industry, where I worked alongside talented teams, solved real-world challenges, and pushed my boundaries."
+  },
+  {
+    "title": "Fueling the Hustle – Freelancing",
+    "year": "Early Career",
+    rotation: "-rotate-2",
+    "description": "While working at TCS, I didn’t let my side hustle fade. I took on freelance projects that helped me polish my skills, explore new technologies, and understand diverse client requirements."
+  },
+  {
+    "title": "Leveling Up – Master’s Studies",
+    "year": "Career + Education",
+    rotation: "rotate-1",
+    "description": "After one year in the industry, I decided to pursue a Master’s degree alongside my job. This step was about growth—deepening my academic roots while applying new learnings directly to my work."
+  }
+]
