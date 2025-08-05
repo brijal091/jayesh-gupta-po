@@ -11,6 +11,7 @@ export const NAME = "Jayesh Gupta";
 export const NAV_ITEMS = [
   { name: "Home", href: "/" },
   { name: "Work", href: "/work" },
+  { name: "Expertise", href: "/expertise" },
   { name: "About", href: "/about" },
   { name: "Resume", href: "/Jayesh_Gupta_Resume.pdf", download: true },
   { name: "Blog", href: "/blog" },
