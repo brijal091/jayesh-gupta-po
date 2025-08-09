@@ -1,6 +1,9 @@
+
 import type { Metadata } from "next";
 import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.scss";
+import Navbar from "@/components/navbar/Navbar";
+import Footer from "@/components/footer/Footer";
 
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -23,10 +26,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${bricolage.variable} antialiased no-scroll font-sans`}
-      >
-        {children}
+      <body className={`${bricolage.variable} antialiased no-scroll font-sans`}>
+        <div className="min-h-screen flex flex-col">
+          <Navbar />
+          <main className="flex-1 pt-20">
+            {children}
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

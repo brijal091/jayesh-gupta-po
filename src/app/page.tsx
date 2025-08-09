@@ -1,6 +1,4 @@
 import { lazy, Suspense } from 'react';
-import Footer from "@/components/footer/Footer";
-import Navbar from "@/components/navbar/Navbar";
 import HeroSection from "@/pages/HeroSection";
 import Testimonials from '@/components/common/Testimonials';
 
@@ -20,19 +18,15 @@ const SectionLoader = () => (
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
-      <main className="flex-1 pt-20">
-        {/* Dynamically render sections */}
-        {dynamicSections.map(({ id, Component }, index) => (
-          <Suspense key={id} fallback={<SectionLoader />}>
-           <div className={(index + 1) % 2 === 0 ? 'bg-primary-50' : ''}>
-              <Component />
-            </div>
-          </Suspense>
-        ))}
-      </main>
-      <Footer />
-    </div>
+    <>
+      {/* Dynamically render sections */}
+      {dynamicSections.map(({ id, Component }, index) => (
+        <Suspense key={id} fallback={<SectionLoader />}>
+          <div className={(index + 1) % 2 === 0 ? 'bg-primary-50' : ''}>
+            <Component />
+          </div>
+        </Suspense>
+      ))}
+    </>
   );
 }
