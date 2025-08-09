@@ -6,7 +6,7 @@ import { NAME, NAV_ITEMS } from "@/constants/constants";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [hoveredItem, setHoveredItem] = useState(null);
+  const [hoveredItem, setHoveredItem] = useState<string|null>(null);
   const pathname = usePathname();
 
   const toggleMenu = () => {
