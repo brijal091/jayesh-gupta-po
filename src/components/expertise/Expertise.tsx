@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { SKILLS_CATEGORIES, FEATURED_SKILLS } from "@/constants/skills";
-import { CERTIFICATES, CERTIFICATE_CATEGORIES } from "@/constants/certificates";
+import React, { useState } from "react";
+import { SKILLS_CATEGORIES } from "@/constants/skills";
+import { CERTIFICATES } from "@/constants/certificates";
 import FolderCard from "../common/card/FolderCard";
 
 interface Skill {
@@ -28,35 +28,11 @@ interface Certificate {
 const Expertise = () => {
   // Skills state
   const [selectedSkillCategory, setSelectedSkillCategory] = useState(0);
-  const [animatedSkills, setAnimatedSkills] = useState(new Set<string>());
 
   // Certificates state
-  const [selectedCertCategory, setSelectedCertCategory] = useState("all");
   const [selectedCertificate, setSelectedCertificate] =
     useState<Certificate | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const filteredCertificates =
-    selectedCertCategory === "all"
-      ? CERTIFICATES
-      : CERTIFICATES.filter((cert) => cert.category === selectedCertCategory);
-
-  useEffect(() => {
-    // Trigger animations when category changes
-    const timer = setTimeout(() => {
-      const currentSkills = SKILLS_CATEGORIES[selectedSkillCategory].skills;
-      currentSkills.forEach((skill, index) => {
-        setTimeout(() => {
-          setAnimatedSkills((prev) => new Set([...prev, skill.name]));
-        }, index * 100);
-      });
-    }, 200);
-
-    return () => {
-      clearTimeout(timer);
-      setAnimatedSkills(new Set());
-    };
-  }, [selectedSkillCategory]);
 
   const handleCertificateClick = (certificate: Certificate) => {
     setSelectedCertificate(certificate);
@@ -69,13 +45,9 @@ const Expertise = () => {
   };
 
   const SkillBubble = ({ skill, index }: { skill: Skill; index: number }) => {
-    const isAnimated = animatedSkills.has(skill.name);
-
     return (
       <div
-        className={`relative group cursor-pointer transition-all duration-500 transform
-          ${isAnimated ? "scale-100 opacity-100" : "scale-75 opacity-0"}
-        `}
+        className="relative group cursor-pointer transition-all duration-500 transform"
         style={{ transitionDelay: `${index * 50}ms` }}
       >
         {/* Skill Bubble */}
@@ -104,26 +76,6 @@ const Expertise = () => {
     );
   };
 
-  const FeaturedSkillTag = ({
-    skill,
-    index,
-  }: {
-    skill: string;
-    index: number;
-  }) => (
-    <div
-      className="px-4 py-2 bg-gradient-to-r from-primary-100/20 to-primary-200/20 
-        border border-primary-100/40 rounded-full text-primary-100 text-sm font-medium
-        hover:border-primary-100/80 hover:bg-primary-100/30 transition-all duration-300
-        cursor-pointer hover:scale-105 transform"
-      style={{
-        animationDelay: `${index * 100}ms`,
-        animation: "fadeInUp 0.6s ease-out forwards",
-      }}
-    >
-      {skill}
-    </div>
-  );
 
   const CertificateModal = () => {
     if (!selectedCertificate || !isModalOpen) return null;
@@ -237,44 +189,52 @@ const Expertise = () => {
 
   return (
     <div className="rounded-2xl p-6">
-      {/* Main Header */}
-      <div className="mb-12 text-center">
-        <h1 className="text-4xl font-bold text-white mb-4 flex items-center justify-center">
-          <div className="w-2 h-12 bg-primary-100 rounded-full mr-4"></div>
-          Technical Expertise
-          <span className="ml-3 text-2xl">🚀</span>
-        </h1>
-        <p className="text-primary-100 text-lg opacity-80 max-w-3xl mx-auto">
-          A comprehensive showcase of my technical skills, certifications, and
-          professional expertise built through years of hands-on experience and
-          continuous learning
-        </p>
-      </div>
-
       {/* Skills Section */}
       <div className="mb-16">
         <div className="mb-8">
           <h2 className="text-3xl font-bold text-white mb-4 flex items-center">
             <div className="w-2 h-8 bg-primary-100 rounded-full mr-4"></div>
             Technical Skills
-            <span className="ml-3 text-lg">⚡</span>
           </h2>
 
-          {/* Featured Skills */}
-          <div className="mb-6">
-            <h3 className="text-primary-100 text-sm font-medium mb-3 opacity-80">
-              💫 FEATURED EXPERTISE
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {FEATURED_SKILLS.map((skill, index) => (
-                <FeaturedSkillTag key={skill} skill={skill} index={index} />
-              ))}
+          <div className="mb-6 flex flex-col gap-8">
+            {/* Skills Stats Section */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="text-center p-4 rounded-xl bg-primary-50/30 border border-primary-100/20">
+                <div className="text-2xl font-bold text-primary-100 mb-1">
+                  {SKILLS_CATEGORIES.reduce(
+                    (total, cat) => total + cat.skills.length,
+                    0
+                  )}
+                  +
+                </div>
+                <div className="text-white/80 text-sm">Technologies</div>
+              </div>
+              <div className="text-center p-4 rounded-xl bg-primary-50/30 border border-primary-100/20">
+                <div className="text-2xl font-bold text-primary-100 mb-1">
+                  4+
+                </div>
+                <div className="text-white/80 text-sm">Years Experience</div>
+              </div>
+              <div className="text-center p-4 rounded-xl bg-primary-50/30 border border-primary-100/20">
+                <div className="text-2xl font-bold text-primary-100 mb-1">
+                  50+
+                </div>
+                <div className="text-white/80 text-sm">Projects Delivered</div>
+              </div>
+              <div className="text-center p-4 rounded-xl bg-primary-50/30 border border-primary-100/20">
+                <div className="text-2xl font-bold text-primary-100 mb-1">
+                  6+
+                </div>
+                <div className="text-white/80 text-sm">Certifications</div>
+              </div>
             </div>
+          
           </div>
         </div>
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap gap-2 mb-8">
+        <div className="flex flex-wrap gap-6 mb-8">
           {SKILLS_CATEGORIES.map((category, index) => (
             <button
               key={index}
@@ -286,7 +246,6 @@ const Expertise = () => {
                     : "bg-primary-50/50 text-primary-100 hover:bg-primary-100/20 border border-primary-100/30"
                 }`}
             >
-              <span className="text-lg">{category.icon}</span>
               {category.category}
             </button>
           ))}
@@ -300,32 +259,6 @@ const Expertise = () => {
             )
           )}
         </div>
-
-        {/* Skills Stats Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div className="text-center p-4 rounded-xl bg-primary-50/30 border border-primary-100/20">
-            <div className="text-2xl font-bold text-primary-100 mb-1">
-              {SKILLS_CATEGORIES.reduce(
-                (total, cat) => total + cat.skills.length,
-                0
-              )}
-              +
-            </div>
-            <div className="text-white/80 text-sm">Technologies</div>
-          </div>
-          <div className="text-center p-4 rounded-xl bg-primary-50/30 border border-primary-100/20">
-            <div className="text-2xl font-bold text-primary-100 mb-1">4+</div>
-            <div className="text-white/80 text-sm">Years Experience</div>
-          </div>
-          <div className="text-center p-4 rounded-xl bg-primary-50/30 border border-primary-100/20">
-            <div className="text-2xl font-bold text-primary-100 mb-1">50+</div>
-            <div className="text-white/80 text-sm">Projects Delivered</div>
-          </div>
-          <div className="text-center p-4 rounded-xl bg-primary-50/30 border border-primary-100/20">
-            <div className="text-2xl font-bold text-primary-100 mb-1">6+</div>
-            <div className="text-white/80 text-sm">Certifications</div>
-          </div>
-        </div>
       </div>
 
       {/* Certificates Section */}
@@ -333,7 +266,6 @@ const Expertise = () => {
         <h2 className="text-3xl font-bold text-white mb-4 flex items-center">
           <div className="w-2 h-8 bg-primary-100 rounded-full mr-4"></div>
           Professional Certifications
-          <span className="ml-3 text-lg">🏆</span>
         </h2>
 
         <p className="text-primary-100 mb-8 opacity-80">
@@ -341,79 +273,22 @@ const Expertise = () => {
           various technologies
         </p>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap gap-3 mb-8">
-          {CERTIFICATE_CATEGORIES.map((category) => (
-            <button
-              key={category.value}
-              onClick={() => setSelectedCertCategory(category.value)}
-              className={`px-4 py-2 rounded-xl font-medium transition-all duration-300 flex items-center gap-2
-                ${
-                  selectedCertCategory === category.value
-                    ? "bg-primary-100 text-primary-50 shadow-lg transform scale-105"
-                    : "bg-primary-50/50 text-primary-100 hover:bg-primary-100/20 border border-primary-100/30"
-                }`}
-            >
-              <span>{category.icon}</span>
-              {category.name}
-            </button>
-          ))}
-        </div>
-
-        {/* Certificates Stats Overview */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <div className="p-4 bg-primary-50/30 rounded-xl border border-primary-100/20 text-center">
-            <div className="text-xl font-bold text-primary-100 mb-1">
-              {CERTIFICATES.length}
-            </div>
-            <div className="text-white/80 text-sm">Total Certs</div>
-          </div>
-          <div className="p-4 bg-primary-50/30 rounded-xl border border-primary-100/20 text-center">
-            <div className="text-xl font-bold text-primary-100 mb-1">
-              {new Set(CERTIFICATES.map((c) => c.issuer)).size}
-            </div>
-            <div className="text-white/80 text-sm">Issuers</div>
-          </div>
-          <div className="p-4 bg-primary-50/30 rounded-xl border border-primary-100/20 text-center">
-            <div className="text-xl font-bold text-primary-100 mb-1">
-              {CERTIFICATES.filter((c) => c.validUntil === "Lifetime").length}
-            </div>
-            <div className="text-white/80 text-sm">Lifetime</div>
-          </div>
-          <div className="p-4 bg-primary-50/30 rounded-xl border border-primary-100/20 text-center">
-            <div className="text-xl font-bold text-primary-100 mb-1">
-              {new Set(CERTIFICATES.flatMap((c) => c.skills)).size}+
-            </div>
-            <div className="text-white/80 text-sm">Skills</div>
-          </div>
-        </div>
-
         {/* Certificates Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 gap-y-32">
-          {filteredCertificates.map((certificate) => (
-            <FolderCard
-              key={certificate.id}
-              year={certificate.year}
-              title={certificate.title}
-              company={certificate.issuer}
-              type={certificate.category}
-              description={certificate.description}
-              image={certificate.image}
-              onClick={() => handleCertificateClick(certificate)}
-            />
-          ))}
+          {CERTIFICATES.length > 0 &&
+            CERTIFICATES.map((certificate) => (
+              <FolderCard
+                key={certificate.id}
+                year={certificate.year}
+                title={certificate.title}
+                company={certificate.issuer}
+                type={certificate.category}
+                description={certificate.description}
+                image={certificate.image}
+                onClick={() => handleCertificateClick(certificate)}
+              />
+            ))}
         </div>
-
-        {/* Empty State */}
-        {filteredCertificates.length === 0 && (
-          <div className="text-center py-16">
-            <div className="text-6xl mb-4">📜</div>
-            <h3 className="text-white text-xl mb-2">No certifications found</h3>
-            <p className="text-primary-100">
-              Try selecting a different category
-            </p>
-          </div>
-        )}
       </div>
 
       {/* Certificate Modal */}

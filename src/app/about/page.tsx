@@ -121,50 +121,7 @@ export default function About() {
                       })}
                     </div>
 
-                    {/* Journey Flow Connection (between rows) */}
-                    {rowIndex < Math.ceil(JOURNEY_TIMELINE.length / 3) - 1 && (
-                      <div className="hidden md:block relative w-full mt-8 mb-8">
-                        <svg
-                          className="w-full h-16"
-                          viewBox="0 0 400 64"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          preserveAspectRatio="none"
-                        >
-                          <path
-                            d="M350 8 Q300 20 250 32 Q200 44 150 32 Q100 20 50 8 Q25 14 12 32 Q25 50 50 56 Q100 44 150 32 Q200 20 250 32 Q300 44 350 56"
-                            stroke="#ae9c96"
-                            strokeWidth="2"
-                            strokeDasharray="8 6"
-                            fill="none"
-                            opacity="0.7"
-                            strokeLinecap="round"
-                          />
-                          {/* Journey waypoints */}
-                          <circle
-                            cx="350"
-                            cy="8"
-                            r="3"
-                            fill="#ae9c96"
-                            opacity="0.9"
-                          />
-                          <circle
-                            cx="200"
-                            cy="32"
-                            r="2"
-                            fill="#ae9c96"
-                            opacity="0.6"
-                          />
-                          <circle
-                            cx="50"
-                            cy="56"
-                            r="3"
-                            fill="#ae9c96"
-                            opacity="0.9"
-                          />
-                        </svg>
-                      </div>
-                    )}
+                 
                   </div>
                 )
               )}

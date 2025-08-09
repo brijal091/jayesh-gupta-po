@@ -78,13 +78,3 @@ export const CERTIFICATES = [
     category: "Full Stack"
   }
 ];
-
-export const CERTIFICATE_CATEGORIES = [
-  { name: "All", value: "all", icon: "📜" },
-  { name: "Cloud", value: "Cloud", icon: "☁️" },
-  { name: "Frontend", value: "Frontend", icon: "🎨" },
-  { name: "Backend", value: "Backend", icon: "⚙️" },
-  { name: "Database", value: "Database", icon: "🗄️" },
-  { name: "Management", value: "Management", icon: "👥" },
-  { name: "Full Stack", value: "Full Stack", icon: "🚀" }
-];

@@ -1,7 +1,5 @@
 "use client";
 
-import Footer from "@/components/footer/Footer";
-import Navbar from "@/components/navbar/Navbar";
 import React, { useState } from "react";
 
 export default function Contact() {
@@ -11,7 +9,6 @@ export default function Contact() {
     message: "",
     purpose: "",
   });
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const purposeOptions = [
@@ -35,13 +32,11 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handlePurposeSelect = (value: string, label: string) => {
-    setFormData((prev) => ({ ...prev, purpose: value }));
-    setIsDropdownOpen(false);
-  };
+  // const handlePurposeSelect = (value: string, label: string) => {
+  //   setFormData((prev) => ({ ...prev, purpose: value }));
+  // };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     setIsSubmitting(true);
 
     // Simulate form submission
@@ -105,28 +100,29 @@ export default function Contact() {
               <select
                 id="purpose"
                 value={selectedPurpose?.value || ""}
-                onChange={(e) => {
-                  const selectedOption = purposeOptions.find(
-                    (opt) => opt.value === e.target.value
-                  );
-                  handlePurposeSelect(
-                    selectedOption.value,
-                    selectedOption.label
-                  );
+                onChange={(e) => handleInputChange(e)}
+                name="purpose"
+                className="w-full px-4 pr-10 py-4 bg-black/40 border border-primary-100/30 rounded-xl text-white focus:border-primary-100 focus:outline-none transition-all duration-300 appearance-none bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNiA5TDEyIDE1TDE4IDkiIHN0cm9rZT0iI2FlOWM5NiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=')] bg-no-repeat bg-[center_right_1rem]"
+                style={{
+                  backgroundSize: '20px',
+                  cursor: 'pointer'
                 }}
-                className="w-full px-4 py-4 bg-black/40 border border-primary-100/30 rounded-xl text-white focus:border-primary-100 focus:outline-none transition-all duration-300"
               >
-                <option value="" disabled>
+                <option value="" disabled className="text-gray-400">
                   Choose your adventure...
                 </option>
                 {purposeOptions.map((option) => (
-                  <option key={option.value} value={option.value}>
+                  <option 
+                    key={option.value} 
+                    value={option.value}
+                    className="bg-primary-50 text-white py-2"
+                  >
                     {option.label}
                   </option>
                 ))}
               </select>
             </div>
-          </div>
+          </div>                                                                                                                                                                                                             
 
           {/* Subject Field */}
           <div className="space-y-2">

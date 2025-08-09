@@ -52,13 +52,3 @@ export const SKILLS_CATEGORIES = [
   }
 ];
 
-export const FEATURED_SKILLS = [
-  "Full Stack Development",
-  "Angular Expert", 
-  "Cloud Architecture",
-  "RESTful APIs",
-  "Database Design",
-  "System Integration",
-  "Performance Optimization",
-  "Agile Development"
-];
