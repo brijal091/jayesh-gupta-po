@@ -1,0 +1,80 @@
+export const CERTIFICATES = [
+  {
+    id: "1",
+    title: "AWS Certified Developer",
+    issuer: "Amazon Web Services",
+    year: "2023",
+    type: "Cloud Computing",
+    description: "Associate level certification for developing applications on AWS platform",
+    image: "/assets/certificates/aws-developer.png",
+    skills: ["AWS", "Lambda", "S3", "DynamoDB", "API Gateway"],
+    credentialId: "AWS-CDA-123456",
+    validUntil: "2026",
+    category: "Cloud"
+  },
+  {
+    id: "2", 
+    title: "Angular Certified Developer",
+    issuer: "Google",
+    year: "2022",
+    type: "Frontend Framework",
+    description: "Professional certification for Angular framework development",
+    image: "/assets/certificates/angular-cert.png",
+    skills: ["Angular", "TypeScript", "RxJS", "NgRx"],
+    credentialId: "ANG-DEV-789012",
+    validUntil: "2025",
+    category: "Frontend"
+  },
+  {
+    id: "3",
+    title: "Java SE 11 Developer",
+    issuer: "Oracle",
+    year: "2021",
+    type: "Programming Language",
+    description: "Oracle Certified Professional Java SE 11 Developer",
+    image: "/assets/certificates/java-cert.png",
+    skills: ["Java", "OOP", "Collections", "Streams", "Concurrency"],
+    credentialId: "OCP-JAVA-345678",
+    validUntil: "Lifetime",
+    category: "Backend"
+  },
+  {
+    id: "4",
+    title: "MySQL Database Administration",
+    issuer: "Oracle",
+    year: "2022",
+    type: "Database",
+    description: "MySQL Database Administrator certification covering advanced database concepts",
+    image: "/assets/certificates/mysql-cert.png",
+    skills: ["MySQL", "Database Design", "Performance Tuning", "Backup & Recovery"],
+    credentialId: "MYSQL-DBA-901234",
+    validUntil: "2025",
+    category: "Database"
+  },
+  {
+    id: "5",
+    title: "Agile Project Management",
+    issuer: "PMI",
+    year: "2023",
+    type: "Project Management",
+    description: "Project Management Institute Agile Certified Practitioner",
+    image: "/assets/certificates/agile-cert.png",
+    skills: ["Agile", "Scrum", "Project Management", "Team Leadership"],
+    credentialId: "PMI-ACP-567890",
+    validUntil: "2026",
+    category: "Management"
+  },
+  {
+    id: "6",
+    title: "Full Stack Web Development",
+    issuer: "Meta",
+    year: "2021",
+    type: "Full Stack",
+    description: "Meta Professional Certificate for Full Stack Web Development",
+    image: "/assets/certificates/meta-cert.png",
+    skills: ["React", "Node.js", "HTML", "CSS", "JavaScript", "MongoDB"],
+    credentialId: "META-FS-234567",
+    validUntil: "Lifetime",
+    category: "Full Stack"
+  }
+];
