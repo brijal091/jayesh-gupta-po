@@ -97,48 +97,52 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-20 left-0 right-0 backdrop-blur-[100px] border-t border-white/10 transition-all duration-300 ${
+        className={`md:hidden absolute top-20 left-0 right-0 bg-primary-50 backdrop-blur-[100px] border-t border-white/10 transition-all duration-300 ${
           isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
         <div className="container mx-auto px-4 py-6">
-          {NAV_ITEMS.map((item) => (
-            <div key={item.name} className="relative">
-              {item.download ? (
-                <a
-                  href={item.href}
-                  download
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`text-lg transition-colors duration-300 hover:text-primary-100 block ${
-                    pathname === item.href ? "text-primary-100" : "text-white"
-                  }`}
-                >
-                  {item.name}
-                </a>
-              ) : (
-                <Link
-                  href={item.href}
-                  className={`text-lg transition-colors duration-300 hover:text-primary-100 block ${
-                    pathname === item.href ? "text-primary-100" : "text-white"
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              )}
+          <div className="flex flex-col items-center space-y-4">
+            {NAV_ITEMS.map((item) => (
+              <div key={item.name} className="relative text-center">
+                {item.download ? (
+                  <a
+                    href={item.href}
+                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`text-lg transition-colors duration-300 hover:text-primary-100 block py-1 ${
+                      pathname === item.href ? "text-primary-100" : "text-white"
+                    }`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className={`text-lg transition-colors duration-300 hover:text-primary-100 block py-1 ${
+                      pathname === item.href ? "text-primary-100" : "text-white"
+                    }`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                )}
 
-              {/* SVG Underline for mobile - only shows for active items */}
-              {pathname === item.href && (
-                <div className="absolute bottom-2 left-0 w-full">
-                  <img
-                    src="/assets/underline.svg"
-                    alt=""
-                    className="w-full h-auto transition-opacity duration-300"
-                  />
-                </div>
-              )}
-            </div>
-          ))}
+                {/* SVG Underline for mobile - only shows for active items */}
+                {pathname === item.href && (
+                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-12">
+                    <img
+                      src="/assets/underline.svg"
+                      alt=""
+                      className="w-full h-auto transition-opacity duration-300"
+                    />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </nav>
