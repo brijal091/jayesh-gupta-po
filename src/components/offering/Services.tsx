@@ -20,8 +20,9 @@ const Services = () => {
               key={index}
               smallTitle={service.title.split(' ')[0]} 
               bigTitle={service.title}
-              imageSrc={`/assets/services/service-${index + 1}.svg`} 
+              imageSrc={service?.imageSrc || `/default_services.png`} 
               imageAlt={service.title}
+              hideNextArrow={true}
             />
           ))}
         </div>

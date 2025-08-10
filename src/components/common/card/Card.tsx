@@ -7,6 +7,7 @@ interface CardProps {
   bigTitle: string
   imageSrc: string
   imageAlt: string
+  hideNextArrow?: boolean
 }
 
 const Card: React.FC<CardProps> = ({
@@ -14,21 +15,21 @@ const Card: React.FC<CardProps> = ({
   bigTitle,
   imageSrc,
   imageAlt,
+  hideNextArrow = false
 }) => {
   return (
     <div className="card relative w-full max-w-sm rounded-lg shadow-lg overflow-hidden border border-gray-200">
       <div className="card__background absolute inset-0 z-0 rounded-lg pointer-events-none backdrop-blur-sm" />
       <div className="relative z-10 p-6 flex flex-col h-full">
-        <div className="card__mascot-area w-full h-48 rounded-md mb-7 overflow-hidden flex items-center justify-center">
-          <div className="card__image-container relative w-32 h-32 flex items-center justify-center">
+                <div className="card__mascot-area w-full h-48 rounded-md mb-7 overflow-hidden relative">
             <Image
               src={imageSrc}
               alt={imageAlt}
               fill
-              className="object-contain"
+              style={{ objectFit: "cover" }}
+              className="w-full h-full"
               priority
             />
-          </div>
         </div>
         {/* <div className="mb-2 flex items-center gap-2">
           <span className="text-primary-200 text-xl font-bold">NEOAPE</span>
@@ -39,11 +40,13 @@ const Card: React.FC<CardProps> = ({
           {bigTitle}
         </div>
         <p>{smallTitle}</p>
+        {!hideNextArrow && (
         <button className="card__arrow-button absolute bottom-7 right-7 w-8 h-8 rounded flex items-center justify-center text-white transition-all duration-300 ease-in-out hover:text-black">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
             <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </button>
+        )}
       </div>
     </div>
   )

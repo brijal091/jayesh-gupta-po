@@ -67,7 +67,8 @@ export const HOME_CONTENT = {
 export const SERVICES = [
   {
     title: "Strategic Consultancy",
-    description: "Unlock growth and efficiency with targeted, insightful consultation. Jayesh offers tailored advice to help businesses overcome challenges, streamline operations, and achieve sustainable success. His approach blends industry knowledge with practical solutions to deliver measurable impact for every client."
+    description: "Unlock growth and efficiency with targeted, insightful consultation. Jayesh offers tailored advice to help businesses overcome challenges, streamline operations, and achieve sustainable success. His approach blends industry knowledge with practical solutions to deliver measurable impact for every client.",
+    imageSrc: "/default_services.png"
   },
   {
     title: "Dynamic Web Development",

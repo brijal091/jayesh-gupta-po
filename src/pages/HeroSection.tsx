@@ -3,6 +3,7 @@
 import { HOME_CONTENT } from "@/constants/constants";
 import React, { useState, useEffect, useMemo } from "react";
 import "@/styles/hero-animations.scss";
+import Link from "next/link";
 
 const HeroSection = () => {
   const [isTyping, setIsTyping] = useState(false);
@@ -65,7 +66,9 @@ const HeroSection = () => {
             <div className="lg:text-left text-center space-y-4">
               <h1 className="text-5xl md:text-7xl font-milkwhite !mt-12">
                 {HOME_CONTENT.GREETING}{" "}
-                <span className="text-7xl lg:text-9xl">{HOME_CONTENT.NAME_HIGHLIGHT}</span>{" "}
+                <span className="text-7xl lg:text-9xl">
+                  {HOME_CONTENT.NAME_HIGHLIGHT}
+                </span>{" "}
                 {HOME_CONTENT.SPEAKING}
               </h1>
               {/* Dynamic Role Text */}
@@ -82,29 +85,31 @@ const HeroSection = () => {
             </div>
 
             {/* Experience Section with Enhanced Design */}
-             <p className="text-xl">
-                <span className="font-semibold">
-                  {HOME_CONTENT.EXPERIENCE.YEARS}
-                </span>{" "}
-                <span className="text-primary-100">
-                  {HOME_CONTENT.EXPERIENCE.DESCRIPTION}
-                </span>
-              </p>
+            <p className="text-xl">
+              <span className="font-semibold">
+                {HOME_CONTENT.EXPERIENCE.YEARS}
+              </span>{" "}
+              <span className="text-primary-100">
+                {HOME_CONTENT.EXPERIENCE.DESCRIPTION}
+              </span>
+            </p>
 
             {/* Call to Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mt-24">
-              <button
+              <Link
                 className="px-8 py-4 bg-primary-100 text-primary-50 rounded-xl font-semibold hover:bg-primary-200 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-primary-100/50 animate-fadeInUp"
                 style={{ animationDelay: "1500ms" }}
+                href={"/work"}
               >
                 View My Work
-              </button>
-              <button
+              </Link>
+              <Link
                 className="px-8 py-4 border-2 border-primary-100 text-primary-100 rounded-xl font-semibold hover:bg-primary-100 hover:text-primary-50 hover:scale-105 transition-all duration-300 animate-fadeInUp"
                 style={{ animationDelay: "1600ms" }}
+                href={"/contact"}
               >
                 Let&apos;s Connect
-              </button>
+              </Link>
             </div>
           </div>
         </div>
