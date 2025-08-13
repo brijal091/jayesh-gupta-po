@@ -36,22 +36,22 @@ const Testimonials = () => {
         </p>
       </div>
 
-      {/* Wall Container with Border and Navigation */}
+      {/* Wall Container with Navigation */}
       <div className="relative">
         {/* Previous Button */}
         <button
           onClick={handlePrev}
           disabled={page === 0}
-          className="absolute left-[-80px] top-1/2 transform -translate-y-1/2 z-10 bg-primary-100 text-primary-50 p-3 rounded-full shadow-lg disabled:opacity-50 hover:bg-primary-50 hover:text-primary-100 transition-all duration-300"
+          className="absolute left-[-50px] top-1/2 transform -translate-y-1/2 z-10 bg-primary-100 text-primary-50 p-3 rounded-full shadow-lg disabled:opacity-50 hover:bg-primary-50 hover:text-primary-100 transition-all duration-300"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
 
-        {/* Wall Border */}
-        <div className="border-4 border-primary-100 rounded-2xl p-8 bg-primary-200/5 backdrop-blur-sm">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        {/* Wall Container */}
+        <div className="p-6 w-full ">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-none">
             {pageNotes.map((t, idx) => (
               <div
                 key={idx}
@@ -60,11 +60,11 @@ const Testimonials = () => {
                   transform: `rotate(${rotations[idx % rotations.length]}deg)`,
                 }}
               >
-                {/* Polaroid Card */}
-                <div className="bg-white/90 backdrop-blur-sm shadow-2xl rounded-lg p-4 w-60 transition-all duration-300 hover:scale-110 hover:rotate-0 hover:bg-white hover:shadow-3xl hover:z-10">
+                {/* Polaroid Card - Consistent sizing for all cards */}
+                <div className="bg-black/20 backdrop-blur-md border-2 border-primary-100 shadow-lg p-6 w-80 h-[440px] transition-all duration-300 hover:scale-105 hover:rotate-0 hover:shadow-xl hover:z-10 relative">
                   
-                  {/* Photo Area */}
-                  <div className="aspect-square bg-gray-100 rounded mb-4 overflow-hidden border border-gray-200">
+                  {/* Photo Area - Fixed height for consistency */}
+                  <div className="h-64 bg-gray-100 mb-6 overflow-hidden flex-shrink-0">
                     <img
                       src={t.clientImage}
                       alt={t.clientName}
@@ -72,20 +72,22 @@ const Testimonials = () => {
                     />
                   </div>
                   
-                  {/* Handwritten Caption Area */}
-                  <div className="min-h-[80px] flex flex-col justify-center">
-                    <div className="text-center">
-                      <p className="text-primary-50 text-lg font-handwriting leading-tight mb-2" style={{ fontFamily: 'Kalam, cursive' }}>
-                        {t.clientName} from {t.clientLocation}
+                  {/* Text Area - Fixed height for consistency */}
+                  <div className="h-32 flex flex-col justify-between px-2 flex-shrink-0">
+                    <div className="text-center flex-1 flex items-center justify-center">
+                      <p className="text-white text-lg font-handwriting leading-relaxed italic" style={{ fontFamily: 'Kalam, cursive' }}>
+                        {t.review.length > 80 ? t.review.substring(0, 80) + '...' : t.review}
                       </p>
-                      <p className="text-primary-50 text-base font-handwriting italic" style={{ fontFamily: 'Kalam, cursive' }}>
-                        {t.review.length > 60 ? t.review.substring(0, 60) + '...' : t.review}
+                    </div>
+                    <div className="text-center mt-4 pb-2">
+                      <p className="text-white text-sm font-handwriting opacity-80" style={{ fontFamily: 'Kalam, cursive' }}>
+                        - {t.clientName}, {t.clientLocation}
                       </p>
                     </div>
                   </div>
 
                   {/* Hover Overlay with Full Review */}
-                  <div className="absolute inset-0 bg-black/80 backdrop-blur-sm rounded-lg p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center">
+                  <div className="absolute inset-0 bg-black/80 backdrop-blur-sm p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center">
                     <div className="text-center text-white">
                       <div className="flex items-center justify-center mb-4">
                         <img
@@ -98,7 +100,7 @@ const Testimonials = () => {
                           <p className="text-sm text-gray-300">{t.clientLocation}</p>
                         </div>
                       </div>
-                      <p className="text-sm leading-relaxed italic">
+                      <p className="text-lg leading-relaxed italic">
                         {t.review}
                       </p>
                     </div>
@@ -113,7 +115,7 @@ const Testimonials = () => {
         <button
           onClick={handleNext}
           disabled={page === pageCount - 1}
-          className="absolute right-[-80px] top-1/2 transform -translate-y-1/2 z-10 bg-primary-100 text-primary-50 p-3 rounded-full shadow-lg disabled:opacity-50 hover:bg-primary-50 hover:text-primary-100 transition-all duration-300"
+          className="absolute right-[-50px] top-1/2 transform -translate-y-1/2 z-10 bg-primary-100 text-primary-50 p-3 rounded-full shadow-lg disabled:opacity-50 hover:bg-primary-50 hover:text-primary-100 transition-all duration-300"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
