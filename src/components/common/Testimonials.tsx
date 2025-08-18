@@ -5,7 +5,7 @@ import React, { useState } from "react";
 
 // Paste the testimonialsData array here
 
-const NOTES_PER_PAGE = 12;
+const NOTES_PER_PAGE = 9;
 
 const Testimonials = () => {
   const [page, setPage] = useState(0);
@@ -50,8 +50,8 @@ const Testimonials = () => {
         </button>
 
         {/* Wall Container */}
-        <div className="p-6 w-full ">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-none">
+        <div className="p-12 w-full ">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-none">
             {pageNotes.map((t, idx) => (
               <div
                 key={idx}
@@ -64,7 +64,7 @@ const Testimonials = () => {
                 <div className="bg-black/20 backdrop-blur-md border-2 border-primary-100 shadow-lg p-6 w-80 h-[440px] transition-all duration-300 hover:scale-105 hover:rotate-0 hover:shadow-xl hover:z-10 relative">
                   
                   {/* Photo Area - Fixed height for consistency */}
-                  <div className="h-64 bg-gray-100 mb-6 overflow-hidden flex-shrink-0">
+                  <div className="h-56 bg-gray-100 mb-6 overflow-hidden flex-shrink-0">
                     <img
                       src={t.clientImage}
                       alt={t.clientName}
@@ -74,15 +74,27 @@ const Testimonials = () => {
                   
                   {/* Text Area - Fixed height for consistency */}
                   <div className="h-32 flex flex-col justify-between px-2 flex-shrink-0">
-                    <div className="text-center flex-1 flex items-center justify-center">
-                      <p className="text-white text-lg font-handwriting leading-relaxed italic" style={{ fontFamily: 'Kalam, cursive' }}>
+                    <div className="text-center flex-1 flex flex-col items-center justify-center">
+                      <p className="text-white text-lg font-handwriting leading-relaxed italic mb-4" style={{ fontFamily: 'Kalam, cursive' }}>
                         {t.review.length > 80 ? t.review.substring(0, 80) + '...' : t.review}
                       </p>
-                    </div>
-                    <div className="text-center mt-4 pb-2">
-                      <p className="text-white text-sm font-handwriting opacity-80" style={{ fontFamily: 'Kalam, cursive' }}>
-                        - {t.clientName}, {t.clientLocation}
-                      </p>
+                      <div className="flex flex-col items-center gap-2">
+                        <div className="flex items-center space-x-1">
+                          {[...Array(5)].map((_, i) => (
+                            <svg
+                              key={i}
+                              className={`w-4 h-4 ${i < t.rating ? 'text-yellow-400' : 'text-gray-400'}`}
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                            >
+                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                          ))}
+                        </div>
+                        <p className="text-white text-sm font-handwriting" style={{ fontFamily: 'Kalam, cursive' }}>
+                          - {t.clientName} <span className="opacity-60">({t.clientLocation})</span>
+                        </p>
+                      </div>
                     </div>
                   </div>
 
