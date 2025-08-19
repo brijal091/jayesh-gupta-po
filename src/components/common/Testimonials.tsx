@@ -1,6 +1,9 @@
 "use client";
 
+import Fiverr from "@/assets/social/Fiverr";
 import { TESTIMONIALS_DATA } from "@/constants/about";
+import { FIVERR_LINK } from "@/constants/constants";
+import Link from "next/link";
 import React, { useState } from "react";
 
 // Paste the testimonialsData array here
@@ -29,22 +32,23 @@ const Testimonials = () => {
   );
   const averageRating = totalRatings / TESTIMONIALS_DATA.length;
   const ratingPercentage = (averageRating / 5) * 100;
+
   const CircularRatingChart = () => {
-    const radius = 70;
+    const radius = 90;
     const circumference = 2 * Math.PI * radius;
     const strokeDasharray = circumference;
     const strokeDashoffset =
       circumference - (ratingPercentage / 100) * circumference;
 
     return (
-      <div className="flex flex-col items-center justify-center h-full">
+      <div className="flex flex-col items-center justify-center">
         <div className="relative">
           {/* Decorative outer ring */}
           <div className="absolute inset-0 rounded-full border-2 border-primary-100/20 animate-pulse"></div>
 
           <svg
-            width="180"
-            height="180"
+            width="220" // Increased from 180 to 220
+            height="220" // Increased from 180 to 220
             className="transform -rotate-90 drop-shadow-2xl"
           >
             {/* Outer glow effect */}
@@ -75,21 +79,21 @@ const Testimonials = () => {
 
             {/* Background circle with gradient */}
             <circle
-              cx="90"
-              cy="90"
+              cx="110"
+              cy="110"
               r={radius}
               stroke="url(#backgroundGradient)"
-              strokeWidth="8"
+              strokeWidth="10" // Increased stroke width for better visibility
               fill="transparent"
             />
 
             {/* Progress circle with glow */}
             <circle
-              cx="90"
-              cy="90"
+              cx="110"
+              cy="110"
               r={radius}
               stroke="url(#gradient)"
-              strokeWidth="8"
+              strokeWidth="10" // Increased stroke width for better visibility
               fill="transparent"
               strokeDasharray={strokeDasharray}
               strokeDashoffset={strokeDashoffset}
@@ -101,14 +105,14 @@ const Testimonials = () => {
 
           {/* Center content with enhanced styling */}
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <div className="text-5xl font-bold text-primary-200 mb-2 font-milkwhite drop-shadow-lg">
+            <div className="text-6xl font-bold text-primary-200 mb-2 font-milkwhite drop-shadow-lg">
               {averageRating.toFixed(1)}
             </div>
             <div className="flex items-center space-x-1 mb-3">
               {[...Array(5)].map((_, i) => (
                 <svg
                   key={i}
-                  className={`w-5 h-5 ${
+                  className={`w-6 h-6 ${
                     i < Math.round(averageRating)
                       ? "text-primary-100"
                       : "text-primary-100/30"
@@ -120,18 +124,12 @@ const Testimonials = () => {
                 </svg>
               ))}
             </div>
-            <div className="text-sm text-primary-100/80 font-medium">
-              {TESTIMONIALS_DATA.length} Reviews
-            </div>
           </div>
-
-          {/* Decorative elements */}
-          <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary-100 rounded-full opacity-60 animate-ping"></div>
-          <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-primary-200 rounded-full opacity-40"></div>
         </div>
       </div>
     );
   };
+
   return (
     <div className="flex flex-col items-center min-h-screen py-8">
       <div className="text-center mb-16">
@@ -145,33 +143,27 @@ const Testimonials = () => {
       </div>
 
       {/* Wall Container with Navigation */}
-      <div className="relative">
-        {/* Previous Button */}
-        {/* <button
-          onClick={handlePrev}
-          disabled={page === 0}
-          className="absolute left-[-50px] top-1/2 transform -translate-y-1/2 z-10 bg-primary-100 text-primary-50 p-3 rounded-full shadow-lg disabled:opacity-50 hover:bg-primary-50 hover:text-primary-100 transition-all duration-300"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-        </button> */}
-
-        <div className="w-64 flex-shrink-0 flex flex-col items-center">
+      <div className="flex">
+        <div className="w-72 pt-12 flex-shrink-0 flex flex-col items-center justify-start">
           <CircularRatingChart />
-
-          {/* Navigation Buttons in Sidebar */}
-          <div className="flex items-center space-x-4 mt-6">
+            <div className="text-xl text-primary-100 font-medium mt-3">
+              {TESTIMONIALS_DATA.length} Reviews
+            </div>
+          <Link
+            href={FIVERR_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="my-6 flex gap-3 justify-center items-center rounded-2xl border border-primary-100/80 p-4"
+          >
+            <Fiverr />
+            <span className="font-milkwhite text-white text-2xl font-semibold">
+              View Reviews
+            </span>
+          </Link>
+          {/* Navigation Buttons in Sidebar - Reduced gap */}
+          <div className="flex items-center space-x-4 mt-4">
+            {" "}
+            {/* Reduced from mt-6 to mt-4 */}
             <button
               onClick={handlePrev}
               disabled={page === 0}
@@ -191,13 +183,11 @@ const Testimonials = () => {
                 />
               </svg>
             </button>
-
             <div className="text-center">
               <span className="text-primary-100 text-sm font-medium">
                 {page + 1} / {pageCount}
               </span>
             </div>
-
             <button
               onClick={handleNext}
               disabled={page === pageCount - 1}
@@ -219,6 +209,7 @@ const Testimonials = () => {
             </button>
           </div>
         </div>
+
         {/* Right Wall Container */}
         <div className="p-12 w-full ">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-none">
@@ -308,27 +299,6 @@ const Testimonials = () => {
             ))}
           </div>
         </div>
-
-        {/* Next Button */}
-        {/* <button
-          onClick={handleNext}
-          disabled={page === pageCount - 1}
-          className="absolute right-[-50px] top-1/2 transform -translate-y-1/2 z-10 bg-primary-100 text-primary-50 p-3 rounded-full shadow-lg disabled:opacity-50 hover:bg-primary-50 hover:text-primary-100 transition-all duration-300"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </button> */}
       </div>
 
       {/* Page Indicator */}

@@ -18,6 +18,9 @@ export const NAV_ITEMS = [
   { name: "Let's Talk", href: "/contact" },
 ];
 
+export const FIVERR_LINK = "https://www.fiverr.com/jayeshgupta091";
+export const CV_LINK = "/Jayesh_Gupta_Resume.pdf";
+export const CV_IMAGE = "/Jayesh_Gupta_Resume.jpg";
 // Social media links
 export const SOCIAL_LINKS = [
   {
