@@ -1,6 +1,9 @@
 "use client";
 
+import Fiverr from "@/assets/social/Fiverr";
 import { TESTIMONIALS_DATA } from "@/constants/about";
+import { FIVERR_LINK } from "@/constants/constants";
+import Link from "next/link";
 import React, { useState } from "react";
 
 // Paste the testimonialsData array here
@@ -23,6 +26,109 @@ const Testimonials = () => {
 
   // Predefined rotations for consistent look
   const rotations = [2, -1, 1, -2, -1, 2, 1, -1, 2, -2, 1, -1];
+  const totalRatings = TESTIMONIALS_DATA.reduce(
+    (sum, testimonial) => sum + testimonial.rating,
+    0
+  );
+  const averageRating = totalRatings / TESTIMONIALS_DATA.length;
+  const ratingPercentage = (averageRating / 5) * 100;
+
+  const CircularRatingChart = () => {
+    const radius = 90;
+    const circumference = 2 * Math.PI * radius;
+    const strokeDasharray = circumference;
+    const strokeDashoffset =
+      circumference - (ratingPercentage / 100) * circumference;
+
+    return (
+      <div className="flex flex-col items-center justify-center">
+        <div className="relative">
+          {/* Decorative outer ring */}
+          <div className="absolute inset-0 rounded-full border-2 border-primary-100/20 animate-pulse"></div>
+
+          <svg
+            width="220" // Increased from 180 to 220
+            height="220" // Increased from 180 to 220
+            className="transform -rotate-90 drop-shadow-2xl"
+          >
+            {/* Outer glow effect */}
+            <defs>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+                <feMerge>
+                  <feMergeNode in="coloredBlur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#ae9c96" />
+                <stop offset="50%" stopColor="#f4f3f2" />
+                <stop offset="100%" stopColor="#ae9c96" />
+              </linearGradient>
+              <linearGradient
+                id="backgroundGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
+                <stop offset="0%" stopColor="rgba(174, 156, 150, 0.1)" />
+                <stop offset="100%" stopColor="rgba(244, 243, 242, 0.1)" />
+              </linearGradient>
+            </defs>
+
+            {/* Background circle with gradient */}
+            <circle
+              cx="110"
+              cy="110"
+              r={radius}
+              stroke="url(#backgroundGradient)"
+              strokeWidth="10" // Increased stroke width for better visibility
+              fill="transparent"
+            />
+
+            {/* Progress circle with glow */}
+            <circle
+              cx="110"
+              cy="110"
+              r={radius}
+              stroke="url(#gradient)"
+              strokeWidth="10" // Increased stroke width for better visibility
+              fill="transparent"
+              strokeDasharray={strokeDasharray}
+              strokeDashoffset={strokeDashoffset}
+              strokeLinecap="round"
+              filter="url(#glow)"
+              className="transition-all duration-2000 ease-out"
+            />
+          </svg>
+
+          {/* Center content with enhanced styling */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <div className="text-6xl font-bold text-primary-200 mb-2 font-milkwhite drop-shadow-lg">
+              {averageRating.toFixed(1)}
+            </div>
+            <div className="flex items-center space-x-1 mb-3">
+              {[...Array(5)].map((_, i) => (
+                <svg
+                  key={i}
+                  className={`w-6 h-6 ${
+                    i < Math.round(averageRating)
+                      ? "text-primary-100"
+                      : "text-primary-100/30"
+                  } drop-shadow-md`}
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="flex flex-col items-center min-h-screen py-8">
@@ -37,19 +143,74 @@ const Testimonials = () => {
       </div>
 
       {/* Wall Container with Navigation */}
-      <div className="relative">
-        {/* Previous Button */}
-        <button
-          onClick={handlePrev}
-          disabled={page === 0}
-          className="absolute left-[-50px] top-1/2 transform -translate-y-1/2 z-10 bg-primary-100 text-primary-50 p-3 rounded-full shadow-lg disabled:opacity-50 hover:bg-primary-50 hover:text-primary-100 transition-all duration-300"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
+      <div className="flex">
+        <div className="w-72 pt-12 flex-shrink-0 flex flex-col items-center justify-start">
+          <CircularRatingChart />
+            <div className="text-xl text-primary-100 font-medium mt-3">
+              {TESTIMONIALS_DATA.length} Reviews
+            </div>
+          <Link
+            href={FIVERR_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="my-6 flex gap-3 justify-center items-center rounded-2xl border border-primary-100/80 p-4"
+          >
+            <Fiverr />
+            <span className="font-milkwhite text-white text-2xl font-semibold">
+              View Reviews
+            </span>
+          </Link>
+          {/* Navigation Buttons in Sidebar - Reduced gap */}
+          <div className="flex items-center space-x-4 mt-4">
+            {" "}
+            {/* Reduced from mt-6 to mt-4 */}
+            <button
+              onClick={handlePrev}
+              disabled={page === 0}
+              className="bg-primary-100 text-primary-50 p-3 rounded-full shadow-lg disabled:opacity-50 hover:bg-primary-50 hover:text-primary-100 transition-all duration-300"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
+            <div className="text-center">
+              <span className="text-primary-100 text-sm font-medium">
+                {page + 1} / {pageCount}
+              </span>
+            </div>
+            <button
+              onClick={handleNext}
+              disabled={page === pageCount - 1}
+              className="bg-primary-100 text-primary-50 p-3 rounded-full shadow-lg disabled:opacity-50 hover:bg-primary-50 hover:text-primary-100 transition-all duration-300"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
 
-        {/* Wall Container */}
+        {/* Right Wall Container */}
         <div className="p-12 w-full ">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-none">
             {pageNotes.map((t, idx) => (
@@ -62,7 +223,6 @@ const Testimonials = () => {
               >
                 {/* Polaroid Card - Consistent sizing for all cards */}
                 <div className="bg-black/20 backdrop-blur-md border-2 border-primary-100 shadow-lg p-6 w-80 h-[440px] transition-all duration-300 hover:scale-105 hover:rotate-0 hover:shadow-xl hover:z-10 relative">
-                  
                   {/* Photo Area - Fixed height for consistency */}
                   <div className="h-56 bg-gray-100 mb-6 overflow-hidden flex-shrink-0">
                     <img
@@ -71,19 +231,28 @@ const Testimonials = () => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  
+
                   {/* Text Area - Fixed height for consistency */}
                   <div className="h-32 flex flex-col justify-between px-2 flex-shrink-0">
                     <div className="text-center flex-1 flex flex-col items-center justify-center">
-                      <p className="text-white text-lg font-handwriting leading-relaxed italic mb-4" style={{ fontFamily: 'Kalam, cursive' }}>
-                        {t.review.length > 80 ? t.review.substring(0, 80) + '...' : t.review}
+                      <p
+                        className="text-white text-lg font-handwriting leading-relaxed italic mb-4"
+                        style={{ fontFamily: "Kalam, cursive" }}
+                      >
+                        {t.review.length > 80
+                          ? t.review.substring(0, 80) + "..."
+                          : t.review}
                       </p>
                       <div className="flex flex-col items-center gap-2">
                         <div className="flex items-center space-x-1">
                           {[...Array(5)].map((_, i) => (
                             <svg
                               key={i}
-                              className={`w-4 h-4 ${i < t.rating ? 'text-yellow-400' : 'text-gray-400'}`}
+                              className={`w-4 h-4 ${
+                                i < t.rating
+                                  ? "text-yellow-400"
+                                  : "text-gray-400"
+                              }`}
                               fill="currentColor"
                               viewBox="0 0 20 20"
                             >
@@ -91,8 +260,14 @@ const Testimonials = () => {
                             </svg>
                           ))}
                         </div>
-                        <p className="text-white text-sm font-handwriting" style={{ fontFamily: 'Kalam, cursive' }}>
-                          - {t.clientName} <span className="opacity-60">({t.clientLocation})</span>
+                        <p
+                          className="text-white text-sm font-handwriting"
+                          style={{ fontFamily: "Kalam, cursive" }}
+                        >
+                          - {t.clientName}{" "}
+                          <span className="opacity-60">
+                            ({t.clientLocation})
+                          </span>
                         </p>
                       </div>
                     </div>
@@ -109,7 +284,9 @@ const Testimonials = () => {
                         />
                         <div className="text-left">
                           <h4 className="font-semibold">{t.clientName}</h4>
-                          <p className="text-sm text-gray-300">{t.clientLocation}</p>
+                          <p className="text-sm text-gray-300">
+                            {t.clientLocation}
+                          </p>
                         </div>
                       </div>
                       <p className="text-lg leading-relaxed italic">
@@ -122,17 +299,6 @@ const Testimonials = () => {
             ))}
           </div>
         </div>
-
-        {/* Next Button */}
-        <button
-          onClick={handleNext}
-          disabled={page === pageCount - 1}
-          className="absolute right-[-50px] top-1/2 transform -translate-y-1/2 z-10 bg-primary-100 text-primary-50 p-3 rounded-full shadow-lg disabled:opacity-50 hover:bg-primary-50 hover:text-primary-100 transition-all duration-300"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
       </div>
 
       {/* Page Indicator */}
@@ -142,14 +308,14 @@ const Testimonials = () => {
             key={i}
             onClick={() => setPage(i)}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              page === i 
-                ? 'bg-primary-100' 
-                : 'bg-primary-100/30 hover:bg-primary-100/60'
+              page === i
+                ? "bg-primary-100"
+                : "bg-primary-100/30 hover:bg-primary-100/60"
             }`}
           />
         ))}
       </div>
-      
+
       <div className="text-center mt-4">
         <span className="text-primary-100 text-sm">
           Page {page + 1} of {pageCount}

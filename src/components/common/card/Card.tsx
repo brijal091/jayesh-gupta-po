@@ -39,7 +39,7 @@ const Card: React.FC<CardProps> = ({
         <div className=" text-white text-3xl leading-snug font-bold mb-auto">
           {bigTitle}
         </div>
-        <p>{smallTitle}</p>
+        <p className='hidden'>{smallTitle}</p>
         {!hideNextArrow && (
         <button className="card__arrow-button absolute bottom-7 right-7 w-8 h-8 rounded flex items-center justify-center text-white transition-all duration-300 ease-in-out hover:text-black">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
