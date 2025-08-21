@@ -146,14 +146,14 @@ const ProfessionalWork = () => {
           ) : (
             <div className="space-y-6 w-full">
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-4 gap-y-32 px-3 py-12 pb-48">
-                {PROJECTS.map((project, index) => (
+                {PROJECTS.map((project) => (
                   <FolderCard
                     key={project.id}
                     year={project.year}
                     title={project.name}
                     company={project.comapny}
                     type={project.type}
-                    image={`/assets/services/service-${index + 1}.svg`} 
+                    // image={`/assets/services/service-${index + 1}.svg`} 
                   />
                 ))}
               </div>

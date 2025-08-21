@@ -50,32 +50,29 @@ const Expertise = () => {
         className="relative group cursor-pointer transition-all duration-500 transform"
         style={{ transitionDelay: `${index * 50}ms` }}
       >
-        {/* Skill Bubble */}
-        <div
-          className="relative p-4 rounded-xl bg-gradient-to-br from-primary-100/20 to-primary-50/40 
-          border border-primary-100/30 hover:border-primary-100/60 transition-all duration-300
-          hover:scale-105 hover:shadow-lg hover:shadow-primary-100/20"
-        >
+        <div className="relative aspect-square p-8 rounded-2xl bg-gradient-to-br from-primary-100/20 via-primary-100/10 to-transparent 
+                      border border-primary-100/30 hover:border-primary-100/60 transition-all duration-500
+                      hover:scale-105 hover:shadow-xl hover:shadow-primary-100/20 flex flex-col items-center justify-center
+                      group-hover:-translate-y-1">
           {/* Skill Icon */}
-          <div className="text-2xl mb-2 text-center group-hover:scale-110 transition-transform duration-300">
+          <div className="text-6xl mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
             {skill.icon}
           </div>
 
           {/* Skill Name */}
-          <h4 className="text-white font-medium text-center text-sm group-hover:text-primary-100 transition-colors">
+          <h4 className="text-white/90 font-medium text-base group-hover:text-primary-100 transition-colors text-center">
             {skill.name}
           </h4>
 
           {/* Hover Glow Effect */}
-          <div
-            className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary-100/10 to-transparent 
-            opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-          />
+          <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+               style={{
+                 background: 'radial-gradient(circle at center, rgba(174, 156, 150, 0.15) 0%, transparent 70%)'
+               }} />
         </div>
       </div>
     );
   };
-
 
   const CertificateModal = () => {
     if (!selectedCertificate || !isModalOpen) return null;
@@ -191,73 +188,43 @@ const Expertise = () => {
     <div className="rounded-2xl p-6">
       {/* Skills Section */}
       <div className="mb-16">
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold text-white mb-4 flex items-center">
-            <div className="w-2 h-8 bg-primary-100 rounded-full mr-4"></div>
+        <div className="mb-12 text-center">
+          <h2 className="text-4xl font-bold text-white mb-4">
             Technical Skills
           </h2>
-
-          <div className="mb-6 flex flex-col gap-8">
-            {/* Skills Stats Section */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div className="text-center p-4 rounded-xl bg-primary-50/30 border border-primary-100/20">
-                <div className="text-2xl font-bold text-primary-100 mb-1">
-                  {SKILLS_CATEGORIES.reduce(
-                    (total, cat) => total + cat.skills.length,
-                    0
-                  )}
-                  +
-                </div>
-                <div className="text-white/80 text-sm">Technologies</div>
-              </div>
-              <div className="text-center p-4 rounded-xl bg-primary-50/30 border border-primary-100/20">
-                <div className="text-2xl font-bold text-primary-100 mb-1">
-                  4+
-                </div>
-                <div className="text-white/80 text-sm">Years Experience</div>
-              </div>
-              <div className="text-center p-4 rounded-xl bg-primary-50/30 border border-primary-100/20">
-                <div className="text-2xl font-bold text-primary-100 mb-1">
-                  50+
-                </div>
-                <div className="text-white/80 text-sm">Projects Delivered</div>
-              </div>
-              <div className="text-center p-4 rounded-xl bg-primary-50/30 border border-primary-100/20">
-                <div className="text-2xl font-bold text-primary-100 mb-1">
-                  6+
-                </div>
-                <div className="text-white/80 text-sm">Certifications</div>
-              </div>
-            </div>
-          
-          </div>
+          <p className="text-primary-100/70 max-w-2xl mx-auto text-sm">
+            A collection of programming languages, frameworks, and tools I work with
+          </p>
         </div>
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap gap-6 mb-8">
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
           {SKILLS_CATEGORIES.map((category, index) => (
             <button
               key={index}
               onClick={() => setSelectedSkillCategory(index)}
-              className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 flex items-center gap-2
+              className={`px-5 py-2.5 rounded-lg text-sm transition-all duration-300 flex items-center gap-2.5
                 ${
                   selectedSkillCategory === index
-                    ? "bg-primary-100 text-primary-50 shadow-lg transform scale-105"
-                    : "bg-primary-50/50 text-primary-100 hover:bg-primary-100/20 border border-primary-100/30"
+                    ? "bg-primary-100/20 text-primary-100 shadow-lg shadow-primary-100/10"
+                    : "bg-primary-50/5 text-primary-100/70 hover:bg-primary-100/10 hover:text-primary-100"
                 }`}
             >
+              <span className="text-xl">{category.icon}</span>
               {category.category}
             </button>
           ))}
         </div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4 mb-12">
-          {SKILLS_CATEGORIES[selectedSkillCategory].skills.map(
-            (skill, index) => (
-              <SkillBubble key={skill.name} skill={skill} index={index} />
-            )
-          )}
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-12">
+            {SKILLS_CATEGORIES[selectedSkillCategory].skills.map(
+              (skill, index) => (
+                <SkillBubble key={skill.name} skill={skill} index={index} />
+              )
+            )}
+          </div>
         </div>
       </div>
 

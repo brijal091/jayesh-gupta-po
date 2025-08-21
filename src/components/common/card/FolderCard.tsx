@@ -47,7 +47,7 @@ const FolderCard = ({
       }}>
         {/* Image Section */}
         <div className="flex-1 flex items-center justify-center mb-4">
-          <div className="w-20 h-16 rounded-lg overflow-hidden shadow-lg flex items-center justify-center bg-gradient-to-br from-orange-400 to-orange-600">
+          <div className="w-20 h-16 rounded-lg overflow-hidden flex items-center justify-center">
             {image ? (
               <img 
                 src={image} 
@@ -55,7 +55,7 @@ const FolderCard = ({
                 className="w-full h-full object-contain bg-white/10 rounded-lg" 
               />
             ) : (
-              <div className="text-2xl">📦</div>
+              <></>
             )}
           </div>
         </div>
@@ -72,7 +72,7 @@ const FolderCard = ({
           )}
           
           {/* Title */}
-          <h3 className="text-base font-semibold leading-tight line-clamp-2 min-h-[2.5rem]">
+          <h3 className="text-xl font-semibold leading-tight line-clamp-2 min-h-[2.5rem]">
             {title || 'Folder Title'}
           </h3>
           
@@ -86,11 +86,11 @@ const FolderCard = ({
       </div>
       
       {/* Arrow Icon - Top layer */}
-      <div className="absolute text-white opacity-60 group-hover:opacity-100 transition-opacity duration-200 z-30 right-[13%] bottom-[12.5%]">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      {/* <div className="absolute text-white group-hover:opacity-100 transition-opacity duration-200 z-30 right-3 -bottom-3">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M7 17l9.2-9.2M17 17V7H7"/>
         </svg>
-      </div>
+      </div> */}
       
       {/* Click Handler - Topmost layer */}
       {onClick && (

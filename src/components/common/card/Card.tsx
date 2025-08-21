@@ -36,7 +36,7 @@ const Card: React.FC<CardProps> = ({
           <span className="text-primary-100 text-xl">|</span>
           <span className="text-primary-200 text-lg font-semibold">Mascot Design</span>
         </div> */}
-        <div className=" text-white text-3xl leading-snug font-bold mb-auto">
+        <div className=" text-white text-2xl font-semibold my-auto">
           {bigTitle}
         </div>
         <p className='hidden'>{smallTitle}</p>
