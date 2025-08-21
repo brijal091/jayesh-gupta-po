@@ -1,8 +1,8 @@
 import { lazy, Suspense } from 'react';
 import HeroSection from "@/pages/HeroSection";
-import Testimonials from '@/components/common/Testimonials';
 
 const Services = lazy(() => import("@/components/offering/Services"));
+const Testimonials = lazy(() => import("@/components/common/Testimonials"));
 
 const dynamicSections = [
   { id: 'hero', Component: HeroSection },
@@ -21,11 +21,11 @@ export default function Home() {
     <>
       {/* Dynamically render sections */}
       {dynamicSections.map(({ id, Component }, index) => (
-        <Suspense key={id} fallback={<SectionLoader />}>
-          <div className={(index + 1) % 2 === 0 ? 'bg-primary-50' : ''}>
+        <div key={id} className={(index + 1) % 2 === 0 ? 'bg-primary-50' : ''}>
+          <Suspense fallback={<SectionLoader />}>
             <Component />
-          </div>
-        </Suspense>
+          </Suspense>
+        </div>
       ))}
     </>
   );

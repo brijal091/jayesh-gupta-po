@@ -12,6 +12,26 @@ const NOTES_PER_PAGE = 9;
 
 const Testimonials = () => {
   const [page, setPage] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const pageCount = Math.ceil(TESTIMONIALS_DATA.length / NOTES_PER_PAGE);
 
@@ -41,8 +61,10 @@ const Testimonials = () => {
       circumference - (ratingPercentage / 100) * circumference;
 
     React.useEffect(() => {
-      document.documentElement.style.setProperty('--final-offset', strokeDashoffset.toString());
-    }, [strokeDashoffset]);
+      if (isVisible) {
+        document.documentElement.style.setProperty('--final-offset', strokeDashoffset.toString());
+      }
+    }, [strokeDashoffset, isVisible]);
 
     return (
       <div className="flex flex-col items-center justify-center">
@@ -103,7 +125,7 @@ const Testimonials = () => {
               strokeDashoffset={circumference}
               strokeLinecap="round"
               filter="url(#glow)"
-              className="animate-[progress_2s_ease-out_forwards]"
+              className={isVisible ? "animate-[progress_2s_ease-out_forwards]" : ""}
               style={{
                 transformOrigin: 'center',
                 transform: 'rotate(-90deg)',
@@ -170,7 +192,7 @@ const Testimonials = () => {
   };
 
   return (
-    <div className="flex flex-col items-center min-h-screen py-8">
+    <div ref={sectionRef} className="flex flex-col items-center min-h-screen py-8">
       <div className="text-center mb-16">
         <h2 className="mb-8 text-6xl font-bold font-milkwhite text-primary-200">
           Wall of Love
