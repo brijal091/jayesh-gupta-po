@@ -14,6 +14,12 @@ module.exports = {
         sans: ["var(--font-bricolage)", "Bricolage Grotesque", "Bricolage Grotesque Placeholder", "sans-serif"],
         milkwhite: ["Milk White Regular", "sans-serif"],
       },
+      keyframes: {
+        progress: {
+          '0%': { strokeDashoffset: '565.48' }, // circumference = 2 * PI * 90
+          '100%': { strokeDashoffset: 'var(--final-offset)' }
+        }
+      },
       colors: {
         primary: {
           50: "#1f191a",

@@ -45,8 +45,8 @@ const Navbar = () => {
               ) : (
                 <Link
                   href={item.href}
-                  className={`text-lg transition-colors duration-300 hover:text-primary-100 block ${
-                    pathname === item.href ? "text-primary-100" : "text-white"
+                  className={`transition-colors duration-300 hover:text-primary-100 block ${
+                    pathname === item.href ? "font-medium text-xl" : "text-white text-lg "
                   }`}
                 >
                   {item.name}
