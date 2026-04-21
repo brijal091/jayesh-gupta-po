@@ -192,20 +192,20 @@ const Testimonials = () => {
   };
 
   return (
-    <div ref={sectionRef} className="flex flex-col items-center min-h-screen py-8">
-      <div className="text-center mb-16">
-        <h2 className="mb-8 text-6xl font-bold font-milkwhite text-primary-200">
+    <div ref={sectionRef} className="flex flex-col items-center min-h-screen py-8 px-4 lg:px-0">
+      <div className="text-center mb-10 lg:mb-16">
+        <h2 className="mb-4 lg:mb-8 text-4xl sm:text-5xl lg:text-6xl font-bold font-milkwhite text-primary-200">
           Wall of Love
         </h2>
-        <p className="text-primary-100 text-xl text-center mx-auto">
+        <p className="text-primary-100 text-base lg:text-xl text-center mx-auto max-w-xl lg:max-w-none">
           We are grateful for our amazing customers! See what they have to say
           about our services.
         </p>
       </div>
 
       {/* Wall Container with Navigation */}
-      <div className="flex">
-        <div className="w-72 pt-12 flex-shrink-0 flex flex-col items-center justify-start">
+      <div className="flex flex-col lg:flex-row">
+        <div className="w-full lg:w-72 pt-6 lg:pt-12 mb-6 lg:mb-0 flex-shrink-0 flex flex-col items-center justify-start">
           <CircularRatingChart />
             <div className="text-xl text-primary-100 font-medium mt-3">
               {TESTIMONIALS_DATA.length} Reviews
@@ -272,8 +272,8 @@ const Testimonials = () => {
         </div>
 
         {/* Right Wall Container */}
-        <div className="p-12 w-full ">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-none">
+        <div className="p-4 sm:p-8 lg:p-12 w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-none place-items-center">
             {pageNotes.map((t, idx) => (
               <div
                 key={idx}
@@ -283,7 +283,7 @@ const Testimonials = () => {
                 }}
               >
                 {/* Polaroid Card - Consistent sizing for all cards */}
-                <div className="bg-black/20 backdrop-blur-md border-2 border-primary-100 shadow-lg p-6 w-80 h-[440px] transition-all duration-300 hover:scale-105 hover:rotate-0 hover:shadow-xl hover:z-10 relative">
+                <div className="bg-black/20 backdrop-blur-md border-2 border-primary-100 shadow-lg p-4 sm:p-6 w-full max-w-80 h-auto sm:h-[440px] transition-all duration-300 hover:scale-105 hover:rotate-0 hover:shadow-xl hover:z-10 relative">
                   {/* Photo Area - Fixed height for consistency */}
                   <div className="h-56 bg-gray-100 mb-6 overflow-hidden flex-shrink-0">
                     <img

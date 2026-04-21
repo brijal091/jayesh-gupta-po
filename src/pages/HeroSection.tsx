@@ -49,7 +49,7 @@ const HeroSection = () => {
   }, [currentIndex, dynamicTexts]);
 
   return (
-    <div className="relative container text-white mx-auto px-4 md:px-6 min-h-screen flex flex-col justify-center overflow-hidden">
+    <div className="relative container text-white mx-auto px-4 md:px-6 min-h-screen flex flex-col justify-center overflow-hidden pb-12">
       {/* Main Content */}
       <div className="relative z-10 grid lg:grid-cols-2 gap-8 items-center min-h-screen">
         {/* Left Column - Content */}
@@ -85,7 +85,7 @@ const HeroSection = () => {
             </div>
 
             {/* Experience Section with Enhanced Design */}
-            <p className="text-xl">
+            <p className="text-xl text-center">
               <span className="font-semibold">
                 {HOME_CONTENT.EXPERIENCE.YEARS}
               </span>{" "}
@@ -95,7 +95,7 @@ const HeroSection = () => {
             </p>
 
             {/* Call to Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mt-24">
+            <div className="flex flex-col sm:flex-row gap-4 my-24">
               <Link
                 className="px-8 py-4 bg-primary-100 text-primary-50 rounded-xl font-semibold hover:bg-primary-200 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-primary-100/50 animate-fadeInUp"
                 style={{ animationDelay: "1500ms" }}

@@ -11,7 +11,7 @@ const dynamicSections = [
 ];
 
 const SectionLoader = () => (
-  <div className="flex items-center justify-center py-20">
+<div className="flex items-center justify-center py-20">
     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
   </div>
 );
@@ -21,11 +21,11 @@ export default function Home() {
     <>
       {/* Dynamically render sections */}
       {dynamicSections.map(({ id, Component }, index) => (
-        <div key={id} className={(index + 1) % 2 === 0 ? 'bg-primary-50' : ''}>
-          <Suspense fallback={<SectionLoader />}>
-            <Component />
+       <div key={id} className={(index + 1) % 2 === 0 ? 'bg-primary-50' : ''}>
+        <Suspense fallback={<SectionLoader />}>
+            <Component /> 
           </Suspense>
-        </div>
+        </div> 
       ))}
     </>
   );

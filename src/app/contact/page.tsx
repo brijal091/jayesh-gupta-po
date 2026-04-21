@@ -1,8 +1,8 @@
 "use client";
 
-import { CV_IMAGE, CV_LINK, SOCIAL_LINKS } from "@/constants/constants";
+// import { CV_IMAGE, CV_LINK, SOCIAL_LINKS } from "@/constants/constants";
 import React, { useState } from "react";
-import Image from "next/image";
+// import Image from "next/image";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -72,63 +72,7 @@ export default function Contact() {
           </span>
         </div>
       </div>
-
-      <div className="grid md:grid-cols-2 gap-12">
-        {/* Left Section - Resume Download */}
-        <div className="flex flex-col">
-          <div className="bg-black/30 backdrop-blur-xl h-full rounded-2xl p-10 border-2 border-primary-100/30 w-full hover:border-primary-100/50 transition-all duration-300">
-            {/* <h1 className="text-white text-5xl font-semibold">My Careear</h1> */}
-            <div className="flex flex-col h-full">
-              {/* Resume Image - Made bigger with padding and border */}
-              <div className="flex items-center justify-center">
-                <div className="relative group w-full mb-12">
-                  <a
-                    href={CV_LINK}
-                    download
-                    className="block transition-all duration-300 hover:scale-105"
-                  >
-                    <div className="relative border border-primary-100/40 rounded-xl overflow-hidden group-hover:border-primary-100/60 transition-all duration-300 p-4 bg-white/5">
-                      <Image
-                        src={CV_IMAGE}
-                        alt="Resume Preview"
-                        height={400}
-                        width={320}
-                        className="h-auto w-full rounded-lg shadow-lg"
-                        unoptimized
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-xl">
-                        <span className="text-white font-semibold bg-primary-100/20 backdrop-blur-sm px-4 py-2 rounded-lg border border-primary-100/30">
-                          Download Resume PDF
-                        </span>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-              
-              {/* Social Media Icons - Positioned at the bottom */}
-              <div className="mt-auto">
-              
-                <div className="flex items-center justify-center gap-4">
-                  {SOCIAL_LINKS.map((social, index) => (
-                    <a
-                      key={index}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-12 h-12 rounded-full border-2 border-primary-100 flex items-center justify-center text-primary-100 hover:border-primary-100 hover:bg-primary-100/10 transition-all duration-300 hover:scale-110"
-                      title={social.name}
-                    >
-                      {social.icon && <social.icon />}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Section - Contact Form */}
+   {/* Right Section - Contact Form */}
         <div className="bg-black/30 backdrop-blur-xl rounded-2xl p-8 md:p-12 border-2 border-primary-100/30 hover:border-primary-100/50 transition-all duration-300">
           <div className="space-y-8">
             <div className="grid md:grid-cols-1 gap-8">
@@ -247,7 +191,60 @@ export default function Contact() {
             </div>
           </div>
         </div>
-      </div>
+
+      {/* <div className="grid md:grid-cols-2 gap-12">
+        <div className="flex flex-col">
+          <div className="bg-black/30 backdrop-blur-xl h-full rounded-2xl p-10 border-2 border-primary-100/30 w-full hover:border-primary-100/50 transition-all duration-300">
+            <div className="flex flex-col h-full">
+              <div className="flex items-center justify-center">
+                <div className="relative group w-full mb-12">
+                  <a
+                    href={CV_LINK}
+                    download
+                    className="block transition-all duration-300 hover:scale-105"
+                  >
+                    <div className="relative border border-primary-100/40 rounded-xl overflow-hidden group-hover:border-primary-100/60 transition-all duration-300 p-4 bg-white/5">
+                      <Image
+                        src={CV_IMAGE}
+                        alt="Resume Preview"
+                        height={400}
+                        width={320}
+                        className="h-auto w-full rounded-lg shadow-lg"
+                        unoptimized
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-xl">
+                        <span className="text-white font-semibold bg-primary-100/20 backdrop-blur-sm px-4 py-2 rounded-lg border border-primary-100/30">
+                          Download Resume PDF
+                        </span>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              
+              <div className="mt-auto">
+              
+                <div className="flex items-center justify-center gap-4">
+                  {SOCIAL_LINKS.map((social, index) => (
+                    <a
+                      key={index}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 rounded-full border-2 border-primary-100 flex items-center justify-center text-primary-100 hover:border-primary-100 hover:bg-primary-100/10 transition-all duration-300 hover:scale-110"
+                      title={social.name}
+                    >
+                      {social.icon && <social.icon />}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+     
+      </div> */}
     </div>
   );
 }
